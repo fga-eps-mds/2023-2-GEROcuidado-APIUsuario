@@ -12,7 +12,7 @@ export class DbService implements TypeOrmOptionsFactory {
       this.configService.get<string>('DB_USERNAME') || 'username';
     const password = this.configService.get<string>('DB_PASS') || 'password';
     const database = this.configService.get<string>('DB_DATABASE') || 'public';
-    const port = this.configService.get<number>('DB_PORT') || 500X;
+    const port = this.configService.get<number>('DB_PORT') || 5001;
 
     return Promise.resolve<TypeOrmModuleOptions>({
       type: 'postgres',

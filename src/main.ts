@@ -12,7 +12,7 @@ import { DataTransformInterceptor } from './shared/interceptors/data-transform.i
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.setGlobalPrefix('api/template');
+  app.setGlobalPrefix('api/usuario');
   app.use(json({ limit: '50mb' }));
   app.use(urlencoded({ extended: true, limit: '50mb' }));
   app.use(helmet());
@@ -34,7 +34,7 @@ async function bootstrap() {
 
   app.enableCors();
 
-  await app.listen(300x);
+  await app.listen(3001);
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();

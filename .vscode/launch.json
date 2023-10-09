@@ -8,8 +8,8 @@
             "type": "node",
             "request": "attach",
             "restart": true,
-            "name": "gerocuidado-template-api",
-            "port": 700x,
+            "name": "gerocuidado-usuario-api",
+            "port": 7001,
             "address": "0.0.0.0",
             "localRoot": "${workspaceFolder}/",
             "skipFiles": [

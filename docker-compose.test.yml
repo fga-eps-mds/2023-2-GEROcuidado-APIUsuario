@@ -1,8 +1,8 @@
 version: '3.7'
 services:
-  gerocuidado-template-api-test:
+  gerocuidado-usuario-api-test:
     image: node:18.13.0
-    container_name: gerocuidado-template-api-test
+    container_name: gerocuidado-usuario-api-test
     volumes:
       - '.:/home/node/app'
     entrypoint: sh /home/node/app/.docker/entrypoint.test.sh
@@ -11,13 +11,13 @@ services:
       - TEST=$TEST
     user: root
     ports:
-      - '300x:300x'
+      - '3001:3001'
     depends_on:
-      - gerocuidado-template-db-test
+      - gerocuidado-usuario-db-test
     networks:
-      - gerocuidado-template-net-test
+      - gerocuidado-usuario-net-test
 
-  gerocuidado-template-db-test:
+  gerocuidado-usuario-db-test:
     build:
       context: ./.docker/postgres
       dockerfile: Dockerfile
@@ -25,14 +25,14 @@ services:
     volumes:
       - './.docker/postgres/config/postgresql.conf:/etc/postgresql/postgresql.conf'
     environment:
-      - POSTGRES_DB=gerocuidado-template-db-test
+      - POSTGRES_DB=gerocuidado-usuario-db-test
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - '500x:500x'
+      - '5001:5001'
     networks:
-      - gerocuidado-template-net-test
+      - gerocuidado-usuario-net-test
 
 networks:
-  gerocuidado-template-net-test:
+  gerocuidado-usuario-net-test:
     driver: bridge
