@@ -1,0 +1,51 @@
+FROM node:18.13.0 AS BUILD_IMAGE
+
+RUN apk update && apk add curl bash make && rm -rf /var/cache/apk/*
+
+WORKDIR /home/node/app
+
+RUN npm i -g @nestjs/cli@8.2.5
+
+COPY package*.json ./
+
+RUN npm ci
+
+RUN npm dedupe
+
+COPY . .
+
+RUN npm run build
+
+RUN npm prune --production
+
+RUN rm -rf .npmrc
+
+FROM node:18.13.0
+
+ENV NODE_ENV=production
+
+ARG TZ='America/Sao_Paulo'
+
+ENV TZ ${TZ}
+
+RUN apk upgrade --update && apk add -U tzdata && cp /usr/share/zoneinfo/${TZ} /etc/localtime && apk del tzdata && rm -rf /var/cache/apk/*
+
+RUN mkdir -p /app/ && chown -R node:node /app
+RUN mkdir -p /app/node_modules && chown -R node:node /app/node_modules
+RUN mkdir -p /app/dist && chown -R node:node app/dist
+
+WORKDIR /app
+
+COPY --chown=node:node --from=BUILD_IMAGE /home/node/app/dist /app
+COPY --chown=node:node --from=BUILD_IMAGE /home/node/app/node_modules /app/node_modules
+COPY --chown=node:node --from=BUILD_IMAGE /home/node/app/.docker/entrypoint.prod.sh /app/entrypoint.sh
+
+RUN chmod +x /app/entrypoint.sh
+
+USER node
+
+EXPOSE 300x
+ENTRYPOINT ["/app/entrypoint.sh"]
+
+
+

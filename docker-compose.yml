@@ -1,0 +1,38 @@
+version: '3.7'
+services:
+  gerocuidado-template-api:
+    image: node:18.13.0
+    container_name: gerocuidado-template-api
+    volumes:
+      - .:/home/node/app
+    entrypoint: sh /home/node/app/.docker/entrypoint.sh
+    environment:
+      - NODE_ENV=development
+    ports:
+      - '300x:300x'
+      - '700x:900x'
+    depends_on:
+      - gerocuidado-template-db
+    networks:
+      - gerocuidado-template-net
+
+  gerocuidado-template-db:
+    build:
+      context: ./.docker/postgres
+      dockerfile: Dockerfile
+    command: postgres -c 'config_file=/etc/postgresql/postgresql.conf'
+    volumes:
+      - './db/postgres:/var/lib/postgresql/data'
+      - './.docker/postgres/config/postgresql.conf:/etc/postgresql/postgresql.conf'
+    environment:
+      - POSTGRES_DB=gerocuidado-template-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '500X:500X'
+    networks:
+      - gerocuidado-template-net
+
+networks:
+  gerocuidado-template-net:
+    driver: bridge
