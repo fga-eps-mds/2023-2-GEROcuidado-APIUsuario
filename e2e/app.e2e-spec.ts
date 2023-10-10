@@ -24,8 +24,8 @@ describe('App (e2e)', () => {
 
     app.useGlobalInterceptors(new DataTransformInterceptor());
     app.useGlobalFilters(
-      new AllExceptionsFilter(),
       new ModelNotFoundExceptionFilter(),
+      new AllExceptionsFilter(),
     );
 
     await app.init();
