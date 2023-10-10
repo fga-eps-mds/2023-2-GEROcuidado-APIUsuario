@@ -5,7 +5,7 @@ services:
     container_name: gerocuidado-usuario-api-test
     volumes:
       - '.:/home/node/app'
-    entrypoint: sh /home/node/app/.docker/entrypoint.test.sh
+    entrypoint: bash /home/node/app/.docker/entrypoint.test.sh
     environment:
       - NODE_ENV=test
       - TEST=$TEST

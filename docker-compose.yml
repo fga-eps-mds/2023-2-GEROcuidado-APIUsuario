@@ -5,7 +5,7 @@ services:
     container_name: gerocuidado-usuario-api
     volumes:
       - .:/home/node/app
-    entrypoint: sh /home/node/app/.docker/entrypoint.sh
+    entrypoint: bash /home/node/app/.docker/entrypoint.sh
     environment:
       - NODE_ENV=development
     ports:
