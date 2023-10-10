@@ -29,76 +29,58 @@ Da mesma forma, alterar os valores das portas terminadas em **_xx_** (i.e 30xx p
 
 ### DEV
 
-    $ docker-compose up
+    ```bash
+    docker-compose up
+    ```
 
 #### INSTALAR DEPENDÊNCIAS E CRIAR NOVAS FUNCIONALIDADES
 
 ```bash
-$ docker-compose exec gerocuidado-usuario-api bash
-$ nest g resource users
+docker-compose exec gerocuidado-usuario-api bash
+nest g resource users
 ```
 
 ### TEST
 
-- DEV
+- GERAL
 
   ```bash
-  $ TEST=dev docker-compose -f docker-compose.check.yml up
+  docker-compose -f docker-compose.test.yml up
   ```
 
   após em um novo terminal
 
   ```bash
-  $ docker-compose -f docker-compose.check.yml exec gerocuidado-usuario-api-test bash
-  $ npm run test
-  $ npm run test:cov
-  $ npm run test:e2e
-  $ npm run test:e2e:cov
+  docker-compose -f docker-compose.test.yml exec gerocuidado-usuario-api-test bash
+  cd /home/node/app
+  npm run test
+  npm run test:cov
+  npm run test:e2e
+  npm run test:e2e:cov
   ```
 
 - UNIT
 
-  Com o container de desenvolvimento em execução, acesse o container com o comando:
-
-  ```bash
-  $ docker-compose exec gerocuidado-usuario-api-test bash
-  ```
-
-  E execute os comandos de teste disponíveis no arquivo **_package.json_**, por exemplo:
-
-  ```bash
-  $ npm run test:watch
-  ```
-
-  - Execução única
     Para apenas rodar os testes unitários e sair do container rode o comando abaixo:
-    `bash $ TEST=unit docker-compose -f docker-compose.check.yml up --abort-on-container-exit --exit-code-from gerocuidado-usuario-api-test `
+
+    ```bash
+    TEST=unit docker-compose -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from gerocuidado-usuario-api-test
+    ```
 
 - E2E
-
-  Suba o container específico para testes e2e, através do comando:
-
-  ```bash
-  $ docker-compose -f docker-compose.check.yml up
-  ```
-
-  E execute os comandos de teste e2e disponíveis no arquivo **_package.json_**, por exemplo:
-
-  ```bash
-  $ npm run test:e2e:watch
-  ```
-
-  - Execução única
     Para apenas rodar os testes unitários e sair do container rode o comando abaixo:
-    `bash $ TEST=e2e docker-compose -f docker-compose.check.yml up --abort-on-container-exit --exit-code-from gerocuidado-usuario-api-test `
+
+    ```bash
+    TEST=e2e docker-compose -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from gerocuidado-usuario-api-test
+    ```
 
 # ENVIRONMENTS VARIABLES
 
-| ENV         | Descrição              | Valor Padrão |
-| ----------- | ---------------------- | ------------ |
-| DB_TYPE     | tipo do banco          |              |
-| DB_HOST     | host do PostgreSQL     |              |
-| DB_USERNAME | usuário do PostgreSQL  |              |
-| DB_PASS     | senha do PostgreSQL    |              |
-| DB_DATABASE | database do PostgreSQL |              |
-| DB_PORT     | porta do PostgreSQL    | 5001         |
+| ENV         | Descrição              | Valor Padrão           |
+| ----------- | ---------------------- | ---------------------- |
+| DB_TYPE     | tipo do banco          | postgres               |
+| DB_HOST     | host do PostgreSQL     | localhost              |
+| DB_USERNAME | usuário do PostgreSQL  | postgres               |
+| DB_PASS     | senha do PostgreSQL    | postgres               |
+| DB_DATABASE | database do PostgreSQL | gerocuidado-usuario-db |
+| DB_PORT     | porta do PostgreSQL    | 5001                   |
