@@ -1,5 +1,5 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
-import { isJsonString } from '../helpers/commons';
+import { isJsonObject } from '../helpers/commons';
 
 interface FilterParams<T> {
   filter: T;
@@ -13,7 +13,7 @@ export class Filtering<T> implements FilterParams<T> {
   }
 
   private buildFilterParams(filter: string): T {
-    if (isJsonString(filter)) {
+    if (isJsonObject(filter)) {
       return JSON.parse(filter) as T;
     }
     return {} as T;

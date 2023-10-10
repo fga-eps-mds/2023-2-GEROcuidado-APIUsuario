@@ -1,10 +1,18 @@
-import { createHash, isJsonObject } from './helper';
+import { createHash, isJsonObject, isNil } from './commons';
 
 describe('Helper', () => {
   it('deve criar um hash com tamanho default', async () => {
     const hash = await createHash();
     expect(hash).toBeDefined();
     expect(hash).toHaveLength(6);
+  });
+
+  it('should be return if its nill for undefined', () => {
+    expect(isNil(undefined)).toEqual(true);
+  });
+
+  it('should be return if its nill for null', () => {
+    expect(isNil(null)).toEqual(true);
   });
 
   it('should be isJsonObject to be true', () => {

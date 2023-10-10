@@ -5,6 +5,18 @@ describe('HttpResponse', () => {
     expect(new HttpResponse({})).toBeDefined();
   });
 
+  it('should create message with payload text', () => {
+    const response = new HttpResponse({});
+    const created = response.onSuccess('MENSAGENS.SALVO-SUCESSO');
+
+    const expected = {
+      message: 'MENSAGENS.SALVO-SUCESSO',
+      data: {},
+    };
+
+    expect(created).toEqual(expected);
+  });
+
   it('should create message with success text', () => {
     const response = new HttpResponse({});
     const created = response.onCreated();

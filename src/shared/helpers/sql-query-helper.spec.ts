@@ -1,4 +1,5 @@
 import {
+  getWhereClauseArrayNumber,
   getWhereClauseBoolean,
   getWhereClauseNumber,
   getWhereClauseString,
@@ -40,12 +41,29 @@ describe('Where Clause BOOLEAN', () => {
   });
 
   it('should return empty string if value is higher than 1', () => {
-    const where = getWhereClauseBoolean(2, 'ativo');
+    const where = getWhereClauseBoolean(undefined, 'ativo');
     expect(where).toBe('');
   });
 
   it('should return where string based on given value and tableColumn', () => {
-    const where = getWhereClauseBoolean(1, 'ativo');
+    const where = getWhereClauseBoolean(true, 'ativo');
     expect(where).toBe(' AND ativo = true');
+  });
+});
+
+describe('Where Clause ARRAY NUMBER', () => {
+  it('should return empty string if value is undefined', () => {
+    const where = getWhereClauseArrayNumber(undefined, 'id');
+    expect(where).toBe('');
+  });
+
+  it('should return where string if value is number', () => {
+    const where = getWhereClauseArrayNumber(1, 'id');
+    expect(where).toBe(" AND id && '{1}'::integer[]");
+  });
+
+  it('should return where string if value is number array', () => {
+    const where = getWhereClauseArrayNumber([1], 'id');
+    expect(where).toBe(" AND id && '{1}'::integer[]");
   });
 });

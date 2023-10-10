@@ -1,6 +1,6 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 
-import { isJsonString } from '../helpers/commons';
+import { isJsonObject } from '../helpers/commons';
 
 export interface OrderParams {
   column: string;
@@ -18,7 +18,7 @@ export class Ordering implements OrderParams {
   }
 
   private buildOrderParams(order: string): OrderParams {
-    if (isJsonString(order)) {
+    if (isJsonObject(order)) {
       const orderObj = JSON.parse(order) as OrderParams;
 
       if (!orderObj.column || orderObj.column.length === 0) {

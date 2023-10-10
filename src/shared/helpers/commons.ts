@@ -6,15 +6,6 @@ export const isNil = (obj: any): obj is null | undefined =>
 export const isUndefined = (obj: any): obj is undefined =>
   typeof obj === 'undefined';
 
-export const isJsonString = (str: string) => {
-  try {
-    JSON.parse(str);
-  } catch (e) {
-    return false;
-  }
-  return true;
-};
-
 export const isJsonObject = (str: string) => {
   try {
     const parse = JSON.parse(str);

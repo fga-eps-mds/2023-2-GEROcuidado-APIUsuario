@@ -18,7 +18,7 @@ describe('DbService', () => {
         case 'DB_DATABASE':
           return 'public';
         case 'DB_PORT':
-          return 5003;
+          return 5001;
         default:
           return null;
       }
@@ -51,7 +51,7 @@ describe('DbService', () => {
     const username = 'username';
     const password = 'password';
     const database = 'public';
-    const port = 5003;
+    const port = 5001;
     const synchronize = false;
     const dbconfig = {
       type: 'postgres',
@@ -78,7 +78,7 @@ describe('DbService', () => {
     const username = 'username';
     const password = 'password';
     const database = 'public';
-    const port = 5003;
+    const port = 5001;
     const synchronize = false;
     const dbconfig = {
       type: 'postgres',
