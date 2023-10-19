@@ -2,7 +2,7 @@ name: Export de métricas
 
 on:
   push:
-    branches: [main, develop]
+    branches: [test]
     tags:
       - "v*"
 
