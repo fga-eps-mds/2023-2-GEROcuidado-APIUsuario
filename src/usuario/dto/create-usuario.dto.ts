@@ -9,6 +9,8 @@ import {
 } from 'class-validator';
 
 export class CreateUsuarioDto {
+  // TODO colocar mensagens customizadas "user friendly" em todos os validators
+
   @IsString()
   @IsNotEmpty()
   @MaxLength(60)
