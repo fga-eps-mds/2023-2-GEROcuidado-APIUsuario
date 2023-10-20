@@ -21,7 +21,7 @@ export class UsuarioService {
     @InjectRepository(Usuario)
     private readonly _repository: Repository<Usuario>,
     private readonly _configService: ConfigService,
-  ) { }
+  ) {}
 
   async create(body: CreateUsuarioDto): Promise<Usuario> {
     const usuario = new Usuario(body);

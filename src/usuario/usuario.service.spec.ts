@@ -1,5 +1,8 @@
+import { BadRequestException } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { OrderParams, Ordering } from '../shared/decorators/ordenate.decorator';
 import {
@@ -8,10 +11,6 @@ import {
 } from '../shared/decorators/paginate.decorator';
 import { Usuario } from './entities/usuario.entity';
 import { UsuarioService } from './usuario.service';
-import { ConfigService } from '@nestjs/config';
-import bcrypt from 'bcrypt';
-import { BadRequestException } from '@nestjs/common';
-
 
 describe('UsuarioService', () => {
   let service: UsuarioService;
@@ -32,10 +31,9 @@ describe('UsuarioService', () => {
     })),
   };
 
-
   const mockConfigService = {
     get: jest.fn(),
-  }
+  };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -66,17 +64,24 @@ describe('UsuarioService', () => {
     jest.spyOn(repository, 'save').mockReturnValue({ id: 1 } as any);
     jest.spyOn(repository, 'findOne').mockReturnValue(undefined as any);
     jest.spyOn(configService, 'get').mockReturnValue(10 as any);
-    jest.spyOn(bcrypt, 'hash').mockImplementation((pass: string | Buffer, salt: string | number) => Promise.resolve('senha'));
+    jest
+      .spyOn(bcrypt, 'hash')
+      .mockImplementation((pass: string | Buffer, salt: string | number) =>
+        Promise.resolve('senha'),
+      );
     const created = await service.create(user);
     expect(created.id).toEqual(1);
   });
 
   it('should not create Usuario', async () => {
     const user = { nome: 'Henrique' } as any;
-    jest.spyOn(repository, 'findOne').mockReturnValue({ email: 'fulano@gmail.com' } as any);
-    expect(service.create(user)).rejects.toThrow(new BadRequestException('Este email já está cadastrado!'));
+    jest
+      .spyOn(repository, 'findOne')
+      .mockReturnValue({ email: 'fulano@gmail.com' } as any);
+    expect(service.create(user)).rejects.toThrow(
+      new BadRequestException('Este email já está cadastrado!'),
+    );
   });
-
 
   it('should find Usuario', async () => {
     jest.spyOn(repository, 'findOneOrFail').mockReturnValue({ id: 1 } as any);
