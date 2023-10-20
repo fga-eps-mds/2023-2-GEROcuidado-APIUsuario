@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
-import * as bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { Ordering } from '../shared/decorators/ordenate.decorator';
 import { Pagination } from '../shared/decorators/paginate.decorator';
@@ -21,7 +21,7 @@ export class UsuarioService {
     @InjectRepository(Usuario)
     private readonly _repository: Repository<Usuario>,
     private readonly _configService: ConfigService,
-  ) {}
+  ) { }
 
   async create(body: CreateUsuarioDto): Promise<Usuario> {
     const usuario = new Usuario(body);
@@ -31,7 +31,7 @@ export class UsuarioService {
   }
 
   async criptografaSenha(senha: string): Promise<string> {
-    const saltRounds = this._configService.get('SALTROUND'); // Número de rounds de salt (quanto maior, mais seguro)
+    const saltRounds = this._configService.get('SALTROUND');
     return bcrypt.hash(senha, Number(saltRounds));
   }
 
