@@ -15,7 +15,7 @@ export class HttpResponse<T> implements Response<T> {
   }
 
   onCreated(): Response<T> {
-    this.message = 'MENSAGENS.SALVO-SUCESSO';
+    this.message = 'Salvo com sucesso!';
     return this;
   }
 
