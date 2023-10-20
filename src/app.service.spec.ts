@@ -16,7 +16,7 @@ describe('AppService', () => {
   });
 
   it('should make health check', () => {
-    expect(service.heathCheck()).toEqual({
+    expect(service.healthCheck()).toEqual({
       message: 'GEROcuidadoApiUsuario health check Ok!',
       data: {},
     });
