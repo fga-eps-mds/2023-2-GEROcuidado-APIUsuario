@@ -21,4 +21,9 @@ export class UsuarioService {
   async findOne(id: number) {
     return this._repository.findOneOrFail({ where: { id } });
   }
+
+  async remove(id: number) {
+    const found = await this.findOne(id);
+    return this._repository.remove(found);
+  }
 }

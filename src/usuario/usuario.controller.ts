@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { HttpResponse } from '../shared/classes/http-response';
 import { Response } from '../shared/interceptors/data-transform.interceptor';
 import { IdValidator } from '../shared/validators/id.validator';
@@ -19,5 +19,11 @@ export class UsuarioController {
   @Get(':id')
   async findOne(@Param() param: IdValidator): Promise<Usuario> {
     return this._service.findOne(param.id);
+  }
+
+  @Delete(':id')
+  async remove(@Param() param: IdValidator): Promise<Response<unknown>> {
+    await this._service.remove(param.id);
+    return new HttpResponse({}).onDeleted();
   }
 }
