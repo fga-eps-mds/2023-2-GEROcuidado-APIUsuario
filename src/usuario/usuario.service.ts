@@ -25,21 +25,20 @@ export class UsuarioService {
 
   async create(body: CreateUsuarioDto): Promise<Usuario> {
     const usuario = new Usuario(body);
-    await this.verificaEmailNoBanco(usuario.email);
-    usuario.senha = await this.criptografaSenha(usuario.senha);
+    await this.checkEmail(usuario.email);
+    usuario.senha = await this.hashPassword(usuario.senha);
     return this._repository.save(usuario);
   }
 
-  async criptografaSenha(senha: string): Promise<string> {
-    const saltRounds = this._configService.get('SALTROUND');
-    return bcrypt.hash(senha, Number(saltRounds));
+  async hashPassword(senha: string): Promise<string> {
+    const salt = this._configService.get('HASH_SALT');
+    return bcrypt.hash(senha, Number(salt));
   }
 
-  async verificaEmailNoBanco(email: string) {
-    const emailCadastrado = await this._repository.findOne({
-      where: { email: email },
-    });
-    if (emailCadastrado) {
+  async checkEmail(email: string) {
+    const userFound = await this._repository.findOne({ where: { email } });
+
+    if (userFound) {
       throw new BadRequestException('Este email já está cadastrado!');
     }
   }
