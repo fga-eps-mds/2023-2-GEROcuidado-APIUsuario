@@ -20,12 +20,12 @@ export class HttpResponse<T> implements Response<T> {
   }
 
   onUpdated(): Response<T> {
-    this.message = 'MENSAGENS.ATUALIZADO-SUCESSO';
+    this.message = 'Atualizado com sucesso!';
     return this;
   }
 
   onDeleted(): Response<T> {
-    this.message = 'MENSAGENS.EXCLUIDO-SUCESSO';
+    this.message = 'Excluído com sucesso!';
     return this;
   }
 }

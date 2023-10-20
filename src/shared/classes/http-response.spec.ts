@@ -34,7 +34,7 @@ describe('HttpResponse', () => {
     const updated = response.onUpdated();
 
     const expected = {
-      message: 'MENSAGENS.ATUALIZADO-SUCESSO',
+      message: 'Atualizado com sucesso!',
       data: {},
     };
 
@@ -46,7 +46,7 @@ describe('HttpResponse', () => {
     const updated = response.onDeleted();
 
     const expected = {
-      message: 'MENSAGENS.EXCLUIDO-SUCESSO',
+      message: 'Excluído com sucesso!',
       data: {},
     };
 
