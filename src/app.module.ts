@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controler';
+import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DbModule } from './config/db/db.module';
 import { DbService } from './config/db/db.service';
