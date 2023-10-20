@@ -1,5 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
+import bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { Ordering } from '../shared/decorators/ordenate.decorator';
 import { Pagination } from '../shared/decorators/paginate.decorator';
@@ -18,13 +20,27 @@ export class UsuarioService {
   constructor(
     @InjectRepository(Usuario)
     private readonly _repository: Repository<Usuario>,
+    private readonly _configService: ConfigService,
   ) {}
 
   async create(body: CreateUsuarioDto): Promise<Usuario> {
     const usuario = new Usuario(body);
-
-    // TODO verificar email e criptografar senha
+    await this.checkEmail(usuario.email);
+    usuario.senha = await this.hashPassword(usuario.senha);
     return this._repository.save(usuario);
+  }
+
+  async hashPassword(senha: string): Promise<string> {
+    const salt = this._configService.get('HASH_SALT');
+    return bcrypt.hash(senha, Number(salt));
+  }
+
+  async checkEmail(email: string) {
+    const userFound = await this._repository.findOne({ where: { email } });
+
+    if (userFound) {
+      throw new BadRequestException('Este email já está cadastrado!');
+    }
   }
 
   async findOne(id: number) {
