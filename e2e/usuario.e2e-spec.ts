@@ -55,10 +55,23 @@ describe('E2E - Usuario', () => {
 
       expect(res.statusCode).toEqual(201);
       expect(res.body.message).toEqual('Salvo com sucesso!');
-      expect(res.body.data).toMatchObject({ ...user, id: res.body.data.id });
+      expect(res.body.data).toMatchObject({ ...user, id: res.body.data.id, senha: res.body.data.senha });
 
       Object.assign(user, res.body.data);
       delete user.senha;
+    });
+
+    it('should not successfully add a new "usuario" when email is already registered', async () => {
+      const res = await request(app.getHttpServer())
+        .post('')
+        .set('Content-Type', 'application/json')
+        .send({ ...user, senha: 'senha' });
+
+      expect(res.statusCode).toEqual(400);
+      expect(res.body.message).toEqual('Este email já está cadastrado!');
+      expect(res.body.data).toBeNull();
+
+
     });
 
     it('should not add a new "usuario" when validations are incorrect', async () => {
