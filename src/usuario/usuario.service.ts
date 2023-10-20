@@ -17,4 +17,8 @@ export class UsuarioService {
     // TODO verificar email e criptografar senha
     return this._repository.save(usuario);
   }
+
+  async findOne(id: number) {
+    return this._repository.findOneOrFail({ where: { id } });
+  }
 }
