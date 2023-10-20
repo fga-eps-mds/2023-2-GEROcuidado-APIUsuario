@@ -1,8 +1,17 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { HttpResponse } from '../shared/classes/http-response';
 import { Response } from '../shared/interceptors/data-transform.interceptor';
 import { IdValidator } from '../shared/validators/id.validator';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
+import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { Usuario } from './entities/usuario.entity';
 import { UsuarioService } from './usuario.service';
 
@@ -21,9 +30,18 @@ export class UsuarioController {
     return this._service.findOne(param.id);
   }
 
+  @Patch(':id')
+  async update(
+    @Param() param: IdValidator,
+    @Body() body: UpdateUsuarioDto,
+  ): Promise<Response<Usuario>> {
+    const updated = await this._service.update(param.id, body);
+    return new HttpResponse<Usuario>(updated).onUpdated();
+  }
+
   @Delete(':id')
   async remove(@Param() param: IdValidator): Promise<Response<unknown>> {
-    await this._service.remove(param.id);
-    return new HttpResponse({}).onDeleted();
+    const deleted = await this._service.remove(param.id);
+    return new HttpResponse(deleted).onDeleted();
   }
 }
