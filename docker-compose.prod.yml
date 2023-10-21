@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+  gerocuidado-usuario-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: gerocuidado-usuario-api-prod
+    environment:
+      - DB_HOST=gerocuidado-usuario-db
+      - DB_USERNAME=postgres
+      - DB_PASS=postgres
+      - DB_DATABASE=gerocuidado-usuario-db
+      - DB_PORT=5001
+    ports:
+      - '3001:3001'
+    depends_on:
+      - gerocuidado-usuario-db
+    networks:
+      - gerocuidado-usuario-net
+
+  gerocuidado-usuario-db:
+    build:
+      context: ./.docker/postgres
+      dockerfile: Dockerfile
+    command: postgres -c 'config_file=/etc/postgresql/postgresql.conf'
+    container_name: gerocuidado-usuario-db
+    volumes:
+      - './.docker/postgres/config/postgresql.conf:/etc/postgresql/postgresql.conf'
+    environment:
+      - POSTGRES_DB=gerocuidado-usuario-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5001:5001'
+    networks:
+      - gerocuidado-usuario-net
+
+networks:
+  gerocuidado-usuario-net:
+    driver: bridge

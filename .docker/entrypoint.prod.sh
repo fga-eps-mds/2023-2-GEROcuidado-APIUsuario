@@ -1,4 +1,3 @@
-#!/bin/bash
-#  TODO
-npm install
-npm run start:dev
+#!/bin/sh
+
+node /app/main.js
