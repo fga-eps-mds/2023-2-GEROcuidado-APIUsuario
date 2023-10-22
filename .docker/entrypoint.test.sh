@@ -10,7 +10,7 @@ npm run lint
 npm run typeorm:run
 
 
-if ! [ -z $TEST ] && [ $TEST == 'test' ]; then
+if ! [ -z $TEST ] && [ $TEST == 'unit' ]; then
     echo "Running unit tests"
     npm run test
 elif ! [ -z $TEST ] && [ $TEST == 'e2e' ]; then
