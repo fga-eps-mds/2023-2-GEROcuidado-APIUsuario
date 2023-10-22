@@ -62,7 +62,13 @@ describe('UsuarioService', () => {
   it('should create Usuario', async () => {
     const user = { nome: 'Henrique' } as any;
     jest.spyOn(repository, 'save').mockReturnValue({ id: 1 } as any);
-    jest.spyOn(repository, 'findOne').mockReturnValue(undefined as any);
+    jest.spyOn(repository, 'createQueryBuilder').mockReturnValue({
+      where: () => ({
+        addSelect: () => ({
+          getOne: jest.fn().mockResolvedValueOnce(undefined),
+        }),
+      }),
+    } as any);
     jest.spyOn(configService, 'get').mockReturnValue(10 as any);
     jest
       .spyOn(bcrypt, 'hash')
@@ -75,9 +81,15 @@ describe('UsuarioService', () => {
 
   it('should not create Usuario', async () => {
     const user = { nome: 'Henrique' } as any;
-    jest
-      .spyOn(repository, 'findOne')
-      .mockReturnValue({ email: 'fulano@gmail.com' } as any);
+    jest.spyOn(repository, 'createQueryBuilder').mockReturnValue({
+      where: () => ({
+        addSelect: () => ({
+          getOne: jest
+            .fn()
+            .mockResolvedValueOnce({ email: 'fulano@gmail.com' } as any),
+        }),
+      }),
+    } as any);
     expect(service.create(user)).rejects.toThrow(
       new BadRequestException('Este email já está cadastrado!'),
     );

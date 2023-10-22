@@ -25,8 +25,10 @@ export class UsuarioService {
 
   async create(body: CreateUsuarioDto): Promise<Usuario> {
     const usuario = new Usuario(body);
-    await this.checkEmail(usuario.email);
+
+    await this.checkUserExists(usuario.email);
     usuario.senha = await this.hashPassword(usuario.senha);
+
     return this._repository.save(usuario);
   }
 
@@ -35,12 +37,20 @@ export class UsuarioService {
     return bcrypt.hash(senha, Number(salt));
   }
 
-  async checkEmail(email: string) {
-    const userFound = await this._repository.findOne({ where: { email } });
+  private async checkUserExists(email: string) {
+    const userFound = await this.findByEmail(email);
 
     if (userFound) {
       throw new BadRequestException('Este email já está cadastrado!');
     }
+  }
+
+  async findByEmail(email: string): Promise<Usuario | null> {
+    return this._repository
+      .createQueryBuilder('usuario')
+      .where('usuario.email = :email', { email })
+      .addSelect('usuario.senha')
+      .getOne();
   }
 
   async findOne(id: number) {
