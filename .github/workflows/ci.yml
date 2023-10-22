@@ -2,7 +2,7 @@ name: Docker
 
 on:
   push:
-    branches: ['feature/#143-CI_CD']
+    branches: ['develop', 'main']
     tags: ['v*.*.*']
 
 env:
