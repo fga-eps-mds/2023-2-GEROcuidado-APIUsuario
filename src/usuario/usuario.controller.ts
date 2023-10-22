@@ -11,6 +11,7 @@ import { HttpResponse } from '../shared/classes/http-response';
 import { Filtering, Filtrate } from '../shared/decorators/filtrate.decorator';
 import { Ordenate, Ordering } from '../shared/decorators/ordenate.decorator';
 import { Paginate, Pagination } from '../shared/decorators/paginate.decorator';
+import { PublicRoute } from '../shared/decorators/public-route.decorator';
 import { Response } from '../shared/interceptors/data-transform.interceptor';
 import { ResponsePaginate } from '../shared/interfaces/response-paginate.interface';
 import { IdValidator } from '../shared/validators/id.validator';
@@ -25,8 +26,10 @@ export class UsuarioController {
   constructor(private readonly _service: UsuarioService) {}
 
   @Post()
+  @PublicRoute()
   async create(@Body() body: CreateUsuarioDto): Promise<Response<Usuario>> {
     const created = await this._service.create(body);
+    created.senha = '';
     return new HttpResponse<Usuario>(created).onCreated();
   }
 
