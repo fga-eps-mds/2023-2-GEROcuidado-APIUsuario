@@ -44,6 +44,36 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+      - name: Test Unit
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+            with:
+              fetch-depth: 0
+
+          - name: Test Unit
+            id: test-unit
+            run: |
+              TEST=unit docker-compose -f docker-compose.test.yml up -V --force-recreate --build --abort-on-container-exit --exit-code-from gerocuidado-usuario-api-test
+            env:
+              TEST: unit
+
+      - name: Test E2E
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+            with:
+              fetch-depth: 0
+
+          - name: Test E2E
+            id: test-e2e
+            run: |
+              TEST=e2e docker-compose -f docker-compose.test.yml up -V --force-recreate --build --abort-on-container-exit --exit-code-from gerocuidado-usuario-api-test
+            env:
+              TEST: e2e
+
       - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
