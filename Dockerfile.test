@@ -1,0 +1,38 @@
+FROM node:18.13.0 AS BUILD_IMAGE
+
+WORKDIR /home/node/app
+
+COPY package*.json ./
+
+RUN npm ci --legacy-peer-deps
+
+COPY . .
+
+RUN npm run build
+
+
+FROM node:18.13.0 AS BUILD_NODE_MODULES
+
+WORKDIR /home/node/app
+
+COPY package*.json ./
+
+RUN npm ci --legacy-peer-deps --omit=dev
+
+
+FROM node:18.13.0
+
+ENV NODE_ENV=test
+
+WORKDIR /app
+
+COPY --chown=node:node --from=BUILD_IMAGE /home/node/app/dist /app
+COPY --chown=node:node --from=BUILD_NODE_MODULES /home/node/app/node_modules /app/node_modules
+COPY --chown=node:node --from=BUILD_IMAGE /home/node/app/.docker/entrypoint.test.sh /app/entrypoint.sh
+
+RUN chmod +x /app/entrypoint.sh
+
+USER node
+
+EXPOSE 3001
+ENTRYPOINT ["/app/entrypoint.sh"]
