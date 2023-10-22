@@ -52,4 +52,16 @@ describe('HttpResponse', () => {
 
     expect(updated).toEqual(expected);
   });
+
+  it('should create message with login text', () => {
+    const response = new HttpResponse({});
+    const updated = response.onLogin();
+
+    const expected = {
+      message: 'Login efetuado com sucesso!',
+      data: {},
+    };
+
+    expect(updated).toEqual(expected);
+  });
 });
