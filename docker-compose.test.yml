@@ -1,9 +1,7 @@
 version: '3.7'
 services:
   gerocuidado-usuario-api-test:
-    build:
-      context: .
-      dockerfile: Dockerfile.test
+    image: node:18.13.0
     container_name: gerocuidado-usuario-api-test
     volumes:
       - '.:/home/node/app'
