@@ -12,6 +12,7 @@ services:
     user: root
     ports:
       - '3001:3001'
+      - '8001:8001'
     depends_on:
       - gerocuidado-usuario-db-test
     networks:
