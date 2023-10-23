@@ -28,4 +28,9 @@ export class HttpResponse<T> implements Response<T> {
     this.message = 'Excluído com sucesso!';
     return this;
   }
+
+  onLogin(): Response<T> {
+    this.message = 'Login efetuado com sucesso!';
+    return this;
+  }
 }

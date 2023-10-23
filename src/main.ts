@@ -4,6 +4,7 @@ import compression from 'compression';
 import { json, urlencoded } from 'express';
 import helmet from 'helmet';
 
+import { Transport } from '@nestjs/microservices';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './shared/filters/all-exceptions.filter';
 import { ModelNotFoundExceptionFilter } from './shared/filters/model-not-found.exception-filter';
@@ -34,6 +35,16 @@ async function bootstrap() {
 
   app.enableCors();
 
+  app.connectMicroservice({
+    transport: Transport.TCP,
+    options: {
+      // TODO analisar em prod esse host
+      host: '0.0.0.0',
+      port: 4001,
+    },
+  });
+
+  await app.startAllMicroservices();
   await app.listen(3001);
   console.log(`Application is running on: ${await app.getUrl()}`);
 }

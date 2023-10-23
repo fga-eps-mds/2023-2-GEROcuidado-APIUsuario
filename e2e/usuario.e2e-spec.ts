@@ -1,6 +1,8 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
+import { ClientProxy, ClientsModule, Transport } from '@nestjs/microservices';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { lastValueFrom, timeout } from 'rxjs';
 import request from 'supertest';
 import { Repository } from 'typeorm';
 import { AppModule } from '../src/app.module';
@@ -11,19 +13,35 @@ import { Usuario } from '../src/usuario/entities/usuario.entity';
 
 describe('E2E - Usuario', () => {
   let app: INestApplication;
+  let client: ClientProxy;
   let repository: Repository<Usuario>;
+  let token: string;
+
+  const senha = '123';
 
   const user: Partial<Usuario> = {
     id: undefined,
     nome: 'Henrique',
     email: 'hacmelo@gmail.com',
-    senha: '123',
+    senha,
     admin: false,
   };
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [
+        AppModule,
+        ClientsModule.register([
+          {
+            name: 'AUTH_CLIENT_TEST',
+            transport: Transport.TCP,
+            options: {
+              host: '0.0.0.0',
+              port: 8001,
+            },
+          },
+        ]),
+      ],
     }).compile();
 
     app = moduleFixture.createNestApplication();
@@ -40,8 +58,19 @@ describe('E2E - Usuario', () => {
       new ModelNotFoundExceptionFilter(),
     );
 
+    app.connectMicroservice({
+      transport: Transport.TCP,
+      options: {
+        host: '0.0.0.0',
+        port: 8001,
+      },
+    });
+
     await app.startAllMicroservices();
     await app.init();
+
+    client = app.get('AUTH_CLIENT_TEST');
+    await client.connect();
 
     repository = app.get<Repository<Usuario>>(getRepositoryToken(Usuario));
   });
@@ -101,11 +130,78 @@ describe('E2E - Usuario', () => {
     });
   });
 
+  describe('POST - /api/usuario/login', () => {
+    it('should not successfully login - wrong password', async () => {
+      const res = await request(app.getHttpServer())
+        .post('/login')
+        .set('Content-Type', 'application/json')
+        .send({ email: user.email, senha: '1234' });
+
+      expect(res.statusCode).toEqual(401);
+      expect(res.body.message).toBe('Senha incorreta!');
+      expect(res.body.data).toBeNull();
+    });
+
+    it('should not successfully login - email not found', async () => {
+      const res = await request(app.getHttpServer())
+        .post('/login')
+        .set('Content-Type', 'application/json')
+        .send({ email: 'a@a.com', senha });
+
+      expect(res.statusCode).toEqual(400);
+      expect(res.body.message).toBe('Este email não está cadastrado!');
+      expect(res.body.data).toBeNull();
+    });
+
+    it('should not get when not authenticated', async () => {
+      const res = await request(app.getHttpServer())
+        .get('')
+        .set('Content-Type', 'application/json')
+        .send();
+
+      expect(res.statusCode).toEqual(401);
+      expect(res.body.message).toBe('Usuário não autenticado!');
+      expect(res.body.data).toBeNull();
+    });
+
+    it('should successfully login', async () => {
+      const res = await request(app.getHttpServer())
+        .post('/login')
+        .set('Content-Type', 'application/json')
+        .send({ email: user.email, senha });
+
+      expect(res.statusCode).toEqual(200);
+      expect(res.body.message).toBe('Login efetuado com sucesso!');
+      expect(res.body.data).toBeDefined();
+
+      token = res.body.data;
+    });
+
+    it('should validate token', async () => {
+      const request = client
+        .send({ role: 'auth', cmd: 'check' }, { jwt: token })
+        .pipe(timeout(5000));
+
+      const response = await lastValueFrom(request);
+      expect(response.email).toBe(user.email);
+    });
+
+    it('should not validate token', async () => {
+      const request = client
+        .send({ role: 'auth', cmd: 'check' }, { jwt: 'invalid token' })
+        .pipe(timeout(5000));
+
+      const response = await lastValueFrom(request);
+      expect(response).toBe(false);
+    });
+  });
+
   describe('GET - /api/usuario/:id', () => {
     it('should successfully get "usuario" by id', async () => {
       const res = await request(app.getHttpServer())
         .get(`/${user.id}`)
         .set('Content-Type', 'application/json')
+        .set('Authorization', 'bearer ' + token)
         .send();
 
       expect(res.statusCode).toEqual(200);
@@ -118,6 +214,7 @@ describe('E2E - Usuario', () => {
       const res = await request(app.getHttpServer())
         .get(`/${wrongId}`)
         .set('Content-Type', 'application/json')
+        .set('Authorization', 'bearer ' + token)
         .send();
 
       expect(res.statusCode).toEqual(400);
@@ -130,6 +227,7 @@ describe('E2E - Usuario', () => {
       const res = await request(app.getHttpServer())
         .get('/9999')
         .set('Content-Type', 'application/json')
+        .set('Authorization', 'bearer ' + token)
         .send();
 
       expect(res.statusCode).toEqual(404);
@@ -149,6 +247,7 @@ describe('E2E - Usuario', () => {
       const res = await request(app.getHttpServer())
         .get('?filter=' + JSON.stringify(filter))
         .set('Content-Type', 'application/json')
+        .set('Authorization', 'bearer ' + token)
         .send();
 
       expect(res.statusCode).toEqual(200);
@@ -164,6 +263,7 @@ describe('E2E - Usuario', () => {
       const res = await request(app.getHttpServer())
         .patch(`/${user.id}`)
         .set('Content-Type', 'application/json')
+        .set('Authorization', 'bearer ' + token)
         .send(update);
 
       user.nome = update.nome;
@@ -179,6 +279,7 @@ describe('E2E - Usuario', () => {
       const res = await request(app.getHttpServer())
         .delete(`/${user.id}`)
         .set('Content-Type', 'application/json')
+        .set('Authorization', 'bearer ' + token)
         .send();
 
       delete user.id;
@@ -193,5 +294,6 @@ describe('E2E - Usuario', () => {
     await repository.query('TRUNCATE usuario CASCADE');
     await repository.delete({});
     await app.close();
+    await client.close();
   });
 });
