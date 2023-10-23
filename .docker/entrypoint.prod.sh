@@ -1,4 +1,5 @@
-#!/bin/bash
-#  TODO
-npm install
-npm run start:dev
+#!/bin/sh
+
+// TODO rodar migrations
+
+node /app/main.js

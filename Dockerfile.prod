@@ -1,7 +1,5 @@
 FROM node:18.13.0 AS BUILD_IMAGE
 
-RUN apk update && apk add curl bash make && rm -rf /var/cache/apk/*
-
 WORKDIR /home/node/app
 
 RUN npm i -g @nestjs/cli@9.1.2
@@ -17,8 +15,6 @@ RUN npm run build
 
 FROM node:18.13.0 AS BUILD_NODE_MODULES
 
-RUN apk update && apk add curl bash make && rm -rf /var/cache/apk/*
-
 WORKDIR /home/node/app
 
 COPY package*.json ./
@@ -29,15 +25,6 @@ RUN npm ci --legacy-peer-deps --omit=dev
 FROM node:18.13.0
 
 ENV NODE_ENV=production
-
-ARG TZ='America/Sao_Paulo'
-
-ENV TZ ${TZ}
-
-RUN apk upgrade --update
-RUN apk add --no-cache tzdata
-RUN cp /usr/share/zoneinfo/${TZ} /etc/localtime
-RUN echo "${TZ}" > /etc/timezone
 
 WORKDIR /app
 

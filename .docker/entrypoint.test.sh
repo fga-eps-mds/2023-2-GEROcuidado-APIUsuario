@@ -12,10 +12,10 @@ npm run typeorm:run
 
 if ! [ -z $TEST ] && [ $TEST == 'unit' ]; then
     echo "Running unit tests"
-    npm run test:cov
+    npm run test
 elif ! [ -z $TEST ] && [ $TEST == 'e2e' ]; then
     echo "Running e2e tests"
-    npm run test:e2e:cov
+    npm run test:e2e
 elif ! [ -z $TEST ] && [ $TEST == 'lint' ]; then
     echo "Running lint"
     npm run lint
