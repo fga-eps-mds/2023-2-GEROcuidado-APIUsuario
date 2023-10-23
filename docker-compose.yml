@@ -10,11 +10,13 @@ services:
       - NODE_ENV=development
     ports:
       - '3001:3001'
+      - '4001:4001'
       - '7001:9001'
     depends_on:
       - gerocuidado-usuario-db
     networks:
       - gerocuidado-usuario-net
+      - gerocuidado-apis-net
 
   gerocuidado-usuario-db:
     build:
@@ -36,3 +38,6 @@ services:
 networks:
   gerocuidado-usuario-net:
     driver: bridge
+  gerocuidado-apis-net:
+    name: gerocuidado-apis-net
+    external: true
