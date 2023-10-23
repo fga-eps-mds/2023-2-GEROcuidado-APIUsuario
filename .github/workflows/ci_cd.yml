@@ -2,12 +2,12 @@ name: Docker
 
 on:
   push:
-    branches: ['develop', 'main']
+    branches: ['develop', 'main', 'feature/#143-CI_CD']
     tags: ['v*.*.*']
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  REGISTRY: gcr.io
+  IMAGE_NAME: GEROcuidadoAPIUsuario/GEROcuidadoAPIUsuarioImage
 
 jobs:
   build:
@@ -35,8 +35,8 @@ jobs:
         uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: _json_key
+          password: ${{ secrets.GCP_SA_KEY }}
 
       - name: Extract Docker metadata
         id: meta
