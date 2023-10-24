@@ -7,8 +7,8 @@ on:
 
 env:
   REGISTRY: gcr.io
-  IMAGE_NAME: GEROcuidadoAPIUsuario/GEROcuidadoAPIUsuarioImage
-  SERVICE: GEROcuidadoAPIUsuarioImage
+  IMAGE_NAME: GEROcuidadoAPIUsuario/gerocuidadoapiusuarioimage
+  SERVICE: gerocuidadoapiusuarioimage
   REGION: us-central1
 
 jobs:
