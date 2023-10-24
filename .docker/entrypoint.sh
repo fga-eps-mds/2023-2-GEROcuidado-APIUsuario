@@ -1,8 +1,15 @@
 #!/bin/bash
 
-cd /home/node/app
+source .env.development
+
 npm install --legacy-peer-deps
+
+rm -rf dist
+
 echo "---------------Run migrations---------------"
+
 npm run typeorm:run
+
 echo "---------------Run migrations - END---------"
-npm run start:dev
+
+npm run start:debug

@@ -7,8 +7,9 @@
         {
             "type": "node",
             "request": "attach",
+            "protocol": "inspector",
             "restart": true,
-            "name": "gerocuidado-usuario-api",
+            "name": "API",
             "port": 7001,
             "address": "0.0.0.0",
             "localRoot": "${workspaceFolder}/",
