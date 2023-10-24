@@ -1,9 +1,7 @@
 version: '3.7'
 services:
-  gerocuidado-usuario-api:
-    build:
-      context: .
-      dockerfile: Dockerfile.prod
+  gerocuidado-usuario-api-prod:
+    image: gerocuidadodev/gerocuidado-usuario-api:latest
     container_name: gerocuidado-usuario-api-prod
     environment:
       - DB_HOST=gerocuidado-usuario-db
@@ -11,6 +9,9 @@ services:
       - DB_PASS=postgres
       - DB_DATABASE=gerocuidado-usuario-db
       - DB_PORT=5001
+      - JWT_TOKEN_SECRET=f57d8cc37a35a8051aa97b5ec8506a2ac479e81f82aed9de975a0cb90b903044
+      - JWT_TOKEN_EXPIRES_IN=12h
+      - HASH_SALT=10
     ports:
       - '3001:3001'
     depends_on:
