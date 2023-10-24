@@ -7,10 +7,10 @@ describe('HttpResponse', () => {
 
   it('should create message with payload text', () => {
     const response = new HttpResponse({});
-    const created = response.onSuccess('MENSAGENS.SALVO-SUCESSO');
+    const created = response.onSuccess('Salvo com sucesso!');
 
     const expected = {
-      message: 'MENSAGENS.SALVO-SUCESSO',
+      message: 'Salvo com sucesso!',
       data: {},
     };
 
@@ -22,7 +22,7 @@ describe('HttpResponse', () => {
     const created = response.onCreated();
 
     const expected = {
-      message: 'MENSAGENS.SALVO-SUCESSO',
+      message: 'Salvo com sucesso!',
       data: {},
     };
 
@@ -34,7 +34,7 @@ describe('HttpResponse', () => {
     const updated = response.onUpdated();
 
     const expected = {
-      message: 'MENSAGENS.ATUALIZADO-SUCESSO',
+      message: 'Atualizado com sucesso!',
       data: {},
     };
 
@@ -46,7 +46,19 @@ describe('HttpResponse', () => {
     const updated = response.onDeleted();
 
     const expected = {
-      message: 'MENSAGENS.EXCLUIDO-SUCESSO',
+      message: 'Excluído com sucesso!',
+      data: {},
+    };
+
+    expect(updated).toEqual(expected);
+  });
+
+  it('should create message with login text', () => {
+    const response = new HttpResponse({});
+    const updated = response.onLogin();
+
+    const expected = {
+      message: 'Login efetuado com sucesso!',
       data: {},
     };
 

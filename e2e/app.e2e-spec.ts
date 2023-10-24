@@ -1,10 +1,10 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import request from 'supertest';
-import { AppModule } from './../src/app.module';
-import { AllExceptionsFilter } from './../src/shared/filters/all-exceptions.filter';
-import { ModelNotFoundExceptionFilter } from './../src/shared/filters/model-not-found.exception-filter';
-import { DataTransformInterceptor } from './../src/shared/interceptors/data-transform.interceptor';
+import { AppModule } from '../src/app.module';
+import { AllExceptionsFilter } from '../src/shared/filters/all-exceptions.filter';
+import { ModelNotFoundExceptionFilter } from '../src/shared/filters/model-not-found.exception-filter';
+import { DataTransformInterceptor } from '../src/shared/interceptors/data-transform.interceptor';
 
 describe('App (e2e)', () => {
   let app: INestApplication;

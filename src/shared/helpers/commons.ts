@@ -9,7 +9,6 @@ export const isUndefined = (obj: any): obj is undefined =>
 export const isJsonObject = (str: string) => {
   try {
     const parse = JSON.parse(str);
-
     return parse && typeof parse === 'object';
   } catch (e) {
     return false;

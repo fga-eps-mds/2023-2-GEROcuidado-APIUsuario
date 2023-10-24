@@ -15,17 +15,22 @@ export class HttpResponse<T> implements Response<T> {
   }
 
   onCreated(): Response<T> {
-    this.message = 'MENSAGENS.SALVO-SUCESSO';
+    this.message = 'Salvo com sucesso!';
     return this;
   }
 
   onUpdated(): Response<T> {
-    this.message = 'MENSAGENS.ATUALIZADO-SUCESSO';
+    this.message = 'Atualizado com sucesso!';
     return this;
   }
 
   onDeleted(): Response<T> {
-    this.message = 'MENSAGENS.EXCLUIDO-SUCESSO';
+    this.message = 'Excluído com sucesso!';
+    return this;
+  }
+
+  onLogin(): Response<T> {
+    this.message = 'Login efetuado com sucesso!';
     return this;
   }
 }

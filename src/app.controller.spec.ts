@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './app.controler';
+import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 describe('AppController', () => {
@@ -19,7 +19,7 @@ describe('AppController', () => {
   });
 
   it('should make health check', () => {
-    expect(controller.heathCheck()).toEqual({
+    expect(controller.healthCheck()).toEqual({
       message: 'GEROcuidadoApiUsuario health check Ok!',
       data: {},
     });
