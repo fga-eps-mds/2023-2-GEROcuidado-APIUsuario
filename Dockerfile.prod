@@ -2,7 +2,7 @@ FROM postgres:13.3 AS BUILD_POSTGRES
 
 WORKDIR /home/node/app
 
-COPY ./docker/postgres/config/postgresql.conf ./
+COPY . .
 
 RUN apt install postgresql
 
