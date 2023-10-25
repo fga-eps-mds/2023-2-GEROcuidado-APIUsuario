@@ -20,6 +20,16 @@ jobs:
         env:
           TEST: unit
 
+  sonarcloud:
+    name: SonarCloud
+    needs: test-unit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
