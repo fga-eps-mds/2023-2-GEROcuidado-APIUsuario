@@ -20,6 +20,12 @@ jobs:
         env:
           TEST: unit
 
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
   test-e2e:
     name: Test E2E
     runs-on: ubuntu-latest
@@ -35,17 +41,3 @@ jobs:
           docker-compose -f docker-compose.test.yml up -V --force-recreate --build --abort-on-container-exit --exit-code-from gerocuidado-usuario-api-test
         env:
           TEST: e2e
-
-  sonarcloud:
-    name: SonarCloud
-    needs: ['test-unit', 'test-e2e']
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
