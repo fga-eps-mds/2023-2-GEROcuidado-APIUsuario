@@ -1,4 +1,9 @@
-import { bufferToBase64, isBase64, isBase64Image } from './buffer-to-image';
+import {
+  bufferToBase64,
+  getImageUri,
+  isBase64,
+  isBase64Image,
+} from './buffer-to-image';
 
 describe('Buffer to image', () => {
   describe('bufferToBase64', () => {
@@ -8,6 +13,13 @@ describe('Buffer to image', () => {
       const image = bufferToBase64(buff);
       expect(image).toBeDefined();
       expect(image).toEqual(str);
+    });
+
+    it('should getImageUri', async () => {
+      const str = '/9j/4AAQSkZJRgABAQAAAQABAAD';
+      const buff = Buffer.from(str, 'utf-8');
+      const image = getImageUri(buff);
+      expect(image).toEqual('data:image/png;base64,' + str);
     });
 
     it('should be bufferToBase64 a empty if null', async () => {
