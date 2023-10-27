@@ -1,17 +1,17 @@
 version: '3.7'
 services:
   gerocuidado-usuario-api:
-    image: node:18.13.0
+    image: gerocuidadodev/node:18.17.0-alpine-dev
     container_name: gerocuidado-usuario-api
     volumes:
-      - .:/home/node/app
-    entrypoint: bash /home/node/app/.docker/entrypoint.sh
+      - '.:/home/node/app'
+    entrypoint: ./.docker/entrypoint.sh
     environment:
       - NODE_ENV=development
     ports:
       - '3001:3001'
       - '4001:4001'
-      - '7001:9001'
+      - '7001:7001'
     depends_on:
       - gerocuidado-usuario-db
     networks:
@@ -23,6 +23,7 @@ services:
       context: ./.docker/postgres
       dockerfile: Dockerfile
     command: postgres -c 'config_file=/etc/postgresql/postgresql.conf'
+    container_name: gerocuidado-usuario-db
     volumes:
       - './db/postgres:/var/lib/postgresql/data'
       - './.docker/postgres/config/postgresql.conf:/etc/postgresql/postgresql.conf'

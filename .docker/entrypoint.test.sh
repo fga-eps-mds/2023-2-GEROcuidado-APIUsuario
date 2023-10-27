@@ -1,26 +1,24 @@
 #!/bin/bash
 
 echo ".................................."
-echo "TEST CONTAINER:"
-
-cd home/node/app
+echo "TEST:" $TEST
 
 npm install --legacy-peer-deps
+npm run build
 npm run lint
 npm run typeorm:run
 
-
 if ! [ -z $TEST ] && [ $TEST == 'unit' ]; then
     echo "Running unit tests"
-    npm run test
+    npm run test:cov
 elif ! [ -z $TEST ] && [ $TEST == 'e2e' ]; then
     echo "Running e2e tests"
-    npm run test:e2e
+    npm run test:e2e:cov
 elif ! [ -z $TEST ] && [ $TEST == 'lint' ]; then
     echo "Running lint"
     npm run lint
     npm run format
-else
-    echo "Running test"
+elif ! [ -z $TEST ] && [ $TEST == 'dev' ]; then
+    echo "Running dev"
     npm run start:dev
 fi
