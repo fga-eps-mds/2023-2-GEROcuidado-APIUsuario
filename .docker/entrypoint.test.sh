@@ -4,7 +4,6 @@ echo ".................................."
 echo "TEST:" $TEST
 
 npm install --legacy-peer-deps
-npm run build
 npm run lint
 npm run typeorm:run
 
