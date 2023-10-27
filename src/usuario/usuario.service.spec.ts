@@ -102,6 +102,16 @@ describe('UsuarioService', () => {
     expect(found.id).toEqual(1);
   });
 
+  it('should find Usuario with foto', async () => {
+    jest.spyOn(repository, 'findOneOrFail').mockReturnValue({
+      id: 1,
+      foto: Buffer.from('/9j/4AAQSkZJRgABAQAAAQABAAD', 'utf-8'),
+    } as any);
+
+    const found = await service.findOne(1, true);
+    expect(found.id).toEqual(1);
+  });
+
   it('should remove Usuario', async () => {
     jest.spyOn(repository, 'findOneOrFail').mockReturnValue({ id: 1 } as any);
     jest.spyOn(repository, 'remove').mockReturnValue({ id: 1 } as any);

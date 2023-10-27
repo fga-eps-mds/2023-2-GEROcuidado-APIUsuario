@@ -4,6 +4,10 @@ export const bufferToBase64 = (buffer: Buffer): string => {
   return isBase64(base64) ? base64 : '';
 };
 
+export const getImageUri = (value: Buffer | string): string => {
+  return `data:image/png;base64,${Buffer.from(value).toString()}`;
+};
+
 export function isBase64(value: unknown): boolean {
   return typeof value === 'string' && isBase64Image(value);
 }

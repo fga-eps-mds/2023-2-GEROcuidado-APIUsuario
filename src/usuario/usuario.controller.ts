@@ -44,7 +44,7 @@ export class UsuarioController {
 
   @Get(':id')
   async findOne(@Param() param: IdValidator): Promise<Usuario> {
-    return this._service.findOne(param.id);
+    return this._service.findOne(param.id, true);
   }
 
   @Patch(':id')
