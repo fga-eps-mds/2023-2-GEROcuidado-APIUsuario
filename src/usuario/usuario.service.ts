@@ -56,7 +56,7 @@ export class UsuarioService {
 
   async findOne(id: number, transformImage = false) {
     const user = await this._repository.findOneOrFail({ where: { id } });
-    if (transformImage) {
+    if (transformImage && user.foto) {
       user.foto = getImageUri(user.foto) as unknown as Buffer;
     }
     return user;
