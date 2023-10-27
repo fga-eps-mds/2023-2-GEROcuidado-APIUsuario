@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { Ordering } from '../shared/decorators/ordenate.decorator';
 import { Pagination } from '../shared/decorators/paginate.decorator';
+import { getImageUri } from '../shared/helpers/buffer-to-image';
 import {
   getWhereClauseNumber,
   getWhereClauseString,
@@ -53,14 +54,17 @@ export class UsuarioService {
       .getOne();
   }
 
-  async findOne(id: number) {
-    return this._repository.findOneOrFail({ where: { id } });
+  async findOne(id: number, transformImage = false) {
+    const user = await this._repository.findOneOrFail({ where: { id } });
+    if (transformImage) {
+      user.foto = getImageUri(user.foto) as unknown as Buffer;
+    }
+    return user;
   }
 
   async update(id: number, body: UpdateUsuarioDto): Promise<Usuario> {
     const found = await this.findOne(id);
     const merged = Object.assign(found, body);
-    // TODO caso a senha seja editada, também criptografar
     return this._repository.save(merged);
   }
 
