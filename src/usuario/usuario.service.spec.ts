@@ -130,6 +130,20 @@ describe('UsuarioService', () => {
     expect(found).toEqual({ id: 1, nome: 'Henrique' });
   });
 
+  it('should update Usuario with photo', async () => {
+    jest.spyOn(repository, 'findOneOrFail').mockReturnValue({ id: 1 } as any);
+    jest
+      .spyOn(repository, 'save')
+      .mockReturnValue({ id: 1, nome: 'Henrique', foto: '1' } as any);
+
+    const found = await service.update(1, { nome: 'Henrique' });
+    expect(found).toEqual({
+      id: 1,
+      nome: 'Henrique',
+      foto: 'data:image/png;base64,1',
+    });
+  });
+
   describe('findAll', () => {
     const usuario = {
       id: 1,
@@ -167,6 +181,31 @@ describe('UsuarioService', () => {
       const { data, count } = await service.findAll({}, ordering, pagination);
       expect(count).toEqual(1);
       expect((data as Usuario[])[0]).toEqual(usuario);
+    });
+  });
+
+  describe('findAllToPublicacao', () => {
+    const usuario = {
+      id: 1,
+      nome: 'Henrique',
+      email: 'email@email.com',
+      foto: '1',
+    };
+
+    it('should findAllToPublicacao', async () => {
+      jest.spyOn(repository, 'createQueryBuilder').mockReturnValue({
+        where: () => ({
+          getMany: jest.fn().mockResolvedValueOnce([usuario]),
+        }),
+      } as any);
+
+      const expectedUser = {
+        ...usuario,
+        foto: 'data:image/png;base64,1',
+      };
+
+      const data = await service.findAllToPublicacao([1]);
+      expect(data).toEqual([expectedUser]);
     });
   });
 });

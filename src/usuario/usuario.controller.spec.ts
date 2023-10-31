@@ -42,6 +42,7 @@ describe('UsuarioController', () => {
             remove: jest.fn(),
             update: jest.fn(),
             findAll: jest.fn(),
+            findAllToPublicacao: jest.fn(),
           },
         },
         {
@@ -125,5 +126,21 @@ describe('UsuarioController', () => {
       expect(pageSize).toEqual(1);
       expect(data).toEqual([user]);
     });
+  });
+
+  it('should find Usuario TCP', async () => {
+    jest.spyOn(service, 'findOne').mockReturnValue(Promise.resolve(user));
+
+    const response = await controller.findOneTCP({ id: 1 });
+    expect(response).toEqual(user);
+  });
+
+  it('should find all Usuario TCP', async () => {
+    jest
+      .spyOn(service, 'findAllToPublicacao')
+      .mockReturnValue(Promise.resolve([user]));
+
+    const response = await controller.findAllTCP({ ids: [1] });
+    expect(response).toEqual([user]);
   });
 });
