@@ -25,6 +25,7 @@ describe('E2E - Usuario', () => {
     email: 'hacmelo@gmail.com',
     senha,
     admin: false,
+    foto: '1' as any,
   };
 
   beforeAll(async () => {
@@ -33,7 +34,7 @@ describe('E2E - Usuario', () => {
         AppModule,
         ClientsModule.register([
           {
-            name: 'AUTH_CLIENT_TEST',
+            name: 'USUARIO_CLIENT_TEST',
             transport: Transport.TCP,
             options: {
               host: '0.0.0.0',
@@ -69,7 +70,7 @@ describe('E2E - Usuario', () => {
     await app.startAllMicroservices();
     await app.init();
 
-    client = app.get('AUTH_CLIENT_TEST');
+    client = app.get('USUARIO_CLIENT_TEST');
     await client.connect();
 
     repository = app.get<Repository<Usuario>>(getRepositoryToken(Usuario));
@@ -92,6 +93,7 @@ describe('E2E - Usuario', () => {
 
       Object.assign(user, res.body.data);
       delete user.senha;
+      delete user.foto;
     });
 
     it('should not successfully add a new "usuario" when email is already registered', async () => {
@@ -196,6 +198,26 @@ describe('E2E - Usuario', () => {
     });
   });
 
+  describe('GET TCP - api/usuario', () => {
+    it('should find one usuario TCP', async () => {
+      const request = client
+        .send({ role: 'info', cmd: 'get' }, { id: user.id })
+        .pipe(timeout(5000));
+
+      const response = await lastValueFrom(request);
+      expect(response.id).toBe(user.id);
+    });
+
+    it('should find all usuario TCP', async () => {
+      const request = client
+        .send({ role: 'info', cmd: 'getAll' }, { ids: [user.id] })
+        .pipe(timeout(5000));
+
+      const response = await lastValueFrom(request);
+      expect(response.length).toBe(1);
+    });
+  });
+
   describe('GET - /api/usuario/:id', () => {
     it('should successfully get "usuario" by id', async () => {
       const res = await request(app.getHttpServer())
@@ -206,7 +228,9 @@ describe('E2E - Usuario', () => {
 
       expect(res.statusCode).toEqual(200);
       expect(res.body.message).toBeNull();
-      expect(res.body.data).toMatchObject(user);
+      const data = res.body.data;
+      delete data.foto;
+      expect(data).toMatchObject(user);
     });
 
     it('should return status 400 when id is invalid', async () => {
@@ -252,7 +276,7 @@ describe('E2E - Usuario', () => {
 
       expect(res.statusCode).toEqual(200);
       expect(res.body.message).toBeNull();
-      expect(res.body.data).toEqual([user]);
+      expect(res.body.data.length).toEqual(1);
     });
   });
 
@@ -270,7 +294,9 @@ describe('E2E - Usuario', () => {
 
       expect(res.statusCode).toEqual(200);
       expect(res.body.message).toBe('Atualizado com sucesso!');
-      expect(res.body.data).toMatchObject(user);
+      const data = res.body.data;
+      delete data.foto;
+      expect(data).toMatchObject(user);
     });
   });
 

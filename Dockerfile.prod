@@ -32,7 +32,6 @@ ENV NODE_ENV=production
 
 WORKDIR /app
 
-COPY --chown=node:node --from=BUILD_POSTGRES /home/node/app/postgresql.conf /app/postgresql.conf
 COPY --chown=node:node --from=BUILD_IMAGE /home/node/app/dist /app
 COPY --chown=node:node --from=BUILD_NODE_MODULES /home/node/app/node_modules /app/node_modules
 COPY --chown=node:node --from=BUILD_IMAGE /home/node/app/.docker/entrypoint.prod.sh /app/entrypoint.sh
@@ -43,4 +42,3 @@ USER node
 
 EXPOSE 3001
 ENTRYPOINT ["/app/entrypoint.sh"]
-

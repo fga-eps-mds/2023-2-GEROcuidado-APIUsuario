@@ -1,6 +1,7 @@
 import {
   getWhereClauseArrayNumber,
   getWhereClauseBoolean,
+  getWhereClauseIN,
   getWhereClauseNumber,
   getWhereClauseString,
 } from './sql-query-helper';
@@ -65,5 +66,22 @@ describe('Where Clause ARRAY NUMBER', () => {
   it('should return where string if value is number array', () => {
     const where = getWhereClauseArrayNumber([1], 'id');
     expect(where).toBe(" AND id && '{1}'::integer[]");
+  });
+});
+
+describe('Where Clause IN', () => {
+  it('should return empty string if value is undefined', () => {
+    const where = getWhereClauseIN(undefined, 'teste');
+    expect(where).toEqual('');
+  });
+
+  it('should return empty string if value is empty', () => {
+    const where = getWhereClauseIN([], 'teste');
+    expect(where).toEqual('');
+  });
+
+  it('should return where string based on given value and tableColumn', () => {
+    const where = getWhereClauseIN([1], 'teste');
+    expect(where).toBe(' AND teste IN(1)');
   });
 });

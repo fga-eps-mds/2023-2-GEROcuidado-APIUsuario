@@ -7,6 +7,7 @@ import { Ordering } from '../shared/decorators/ordenate.decorator';
 import { Pagination } from '../shared/decorators/paginate.decorator';
 import { getImageUri } from '../shared/helpers/buffer-to-image';
 import {
+  getWhereClauseIN,
   getWhereClauseNumber,
   getWhereClauseString,
 } from '../shared/helpers/sql-query-helper';
@@ -65,7 +66,14 @@ export class UsuarioService {
   async update(id: number, body: UpdateUsuarioDto): Promise<Usuario> {
     const found = await this.findOne(id);
     const merged = Object.assign(found, body);
-    return this._repository.save(merged);
+
+    const updated = await this._repository.save(merged);
+
+    if (updated.foto) {
+      updated.foto = getImageUri(updated.foto) as unknown as Buffer & string;
+    }
+
+    return updated;
   }
 
   async remove(id: number) {
@@ -107,5 +115,22 @@ export class UsuarioService {
     whereClause += getWhereClauseNumber(filter.id, 'id');
 
     return whereClause;
+  }
+
+  async findAllToPublicacao(ids: number[]): Promise<Usuario[]> {
+    const where = `1 = 1 ${getWhereClauseIN(ids, 'usuario.id')}`;
+
+    const usuarios = await this._repository
+      .createQueryBuilder('usuario')
+      .where(`${where}`)
+      .getMany();
+
+    return usuarios.map((usuario) => {
+      if (usuario.foto) {
+        usuario.foto = getImageUri(usuario.foto) as unknown as Buffer;
+      }
+
+      return usuario;
+    });
   }
 }
