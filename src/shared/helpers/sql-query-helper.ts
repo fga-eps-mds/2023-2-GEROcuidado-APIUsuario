@@ -1,5 +1,13 @@
 export type ClauseNumber = number | string | undefined;
 
+export function getWhereClauseIN(
+  value: number[] | undefined,
+  tableColumn: string,
+): string {
+  if (!value || value.length < 1) return '';
+  return ` AND ${tableColumn} IN(${value})`;
+}
+
 export function getWhereClauseString(
   value: string | undefined,
   tableColumn: string,

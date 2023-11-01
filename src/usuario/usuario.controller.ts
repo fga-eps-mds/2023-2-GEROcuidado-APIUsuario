@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { MessagePattern } from '@nestjs/microservices';
 import { HttpResponse } from '../shared/classes/http-response';
 import { Filtering, Filtrate } from '../shared/decorators/filtrate.decorator';
 import { Ordenate, Ordering } from '../shared/decorators/ordenate.decorator';
@@ -60,5 +61,15 @@ export class UsuarioController {
   async remove(@Param() param: IdValidator): Promise<Response<unknown>> {
     const deleted = await this._service.remove(param.id);
     return new HttpResponse(deleted).onDeleted();
+  }
+
+  @MessagePattern({ role: 'info', cmd: 'get' })
+  async findOneTCP(data: { id: number }): Promise<Usuario> {
+    return this._service.findOne(data.id, true);
+  }
+
+  @MessagePattern({ role: 'info', cmd: 'getAll' })
+  async findAllTCP(data: { ids: number[] }): Promise<Usuario[]> {
+    return this._service.findAllToPublicacao(data.ids);
   }
 }
