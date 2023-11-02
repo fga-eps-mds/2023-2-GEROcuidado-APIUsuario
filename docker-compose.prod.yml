@@ -39,3 +39,6 @@ services:
 networks:
   gerocuidado-usuario-net:
     driver: bridge
+  gerocuidado-apis-net:
+    name: gerocuidado-apis-net
+    external: true
