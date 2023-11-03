@@ -18,6 +18,7 @@ services:
       - gerocuidado-usuario-db
     networks:
       - gerocuidado-usuario-net
+      - gerocuidado-apis-net
 
   gerocuidado-usuario-db:
     build:
