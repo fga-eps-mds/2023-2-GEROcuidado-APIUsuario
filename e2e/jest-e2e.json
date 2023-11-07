@@ -1,5 +1,10 @@
 {
-  "moduleFileExtensions": ["ts", "tsx", "js", "json"],
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "json"
+  ],
   "transform": {
     "^.+\\.tsx?$": "ts-jest"
   },
@@ -11,10 +16,22 @@
     "!**/node_modules/**",
     "!**/vendor/**",
     "!src/**/main.{js,jsx,tsx,ts}",
-    "!src/**/ormconfig.{js,jsx,tsx,ts}"
+    "!src/**/migrations.{js,jsx,tsx,ts}",
+    "!src/**/ormconfig.{js,jsx,tsx,ts}",
+    "!src/migration/**",
+    "!src/shared/**",
+    "!src/config/**"
   ],
-  "testPathIgnorePatterns": ["/node_modules/", "/src/"],
-  "coverageReporters": ["json", "lcov"],
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "/src/"
+  ],
+  "coverageReporters": [
+    "json",
+    "lcov"
+  ],
   "testEnvironment": "node",
-  "coveragePathIgnorePatterns": [".spec.ts$"]
+  "coveragePathIgnorePatterns": [
+    ".spec.ts$"
+  ]
 }
