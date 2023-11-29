@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - develop
+      - sonar-metrics
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
