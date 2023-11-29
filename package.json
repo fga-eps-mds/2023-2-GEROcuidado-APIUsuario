@@ -28,6 +28,7 @@
     "typeorm:migrate": "npm run typeorm migration:generate -- -d src/ormconfig.ts",
     "typeorm:run": "./node_modules/.bin/typeorm-ts-node-commonjs migration:run -d src/ormconfig.ts",
     "schema:drop": "npm run typeorm schema:drop",
+    "sonar": "sonar-scanner",
     "schema:sync": "npm run typeorm schema:sync"
   },
   "dependencies": {
