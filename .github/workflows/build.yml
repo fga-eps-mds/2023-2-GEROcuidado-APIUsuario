@@ -2,7 +2,8 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - develop
+      - release-sonar_test
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
