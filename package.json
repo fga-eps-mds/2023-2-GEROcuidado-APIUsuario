@@ -144,7 +144,7 @@
         }
       ]
     ],
-    "coverageDirectory": "../coverage/unit",
+    "coverageDirectory": "./coverage/unit",
     "coveragePathIgnorePatterns": [
       "src/migration",
       ".module.ts$",
