@@ -131,7 +131,7 @@
         "jest-sonar",
         {
           "outputDirectory": "reports",
-          "outputName": "sonar-report.xml",
+          "outputName": "coverage.xml",
           "sonarQubeVersion": "LATEST"
         }
       ]
