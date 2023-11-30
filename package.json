@@ -133,6 +133,14 @@
           "outputDirectory": "reports",
           "outputName": "sonar-report.xml",
           "sonarQubeVersion": "LATEST"
+          
+        }
+      ],
+      [
+        "jest-junit",
+        {
+          "outputDirectory": "reports",
+          "outputName": "junit.xml"
         }
       ]
     ],
