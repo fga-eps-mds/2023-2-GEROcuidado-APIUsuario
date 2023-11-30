@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="134" failures="0" errors="0" time="20.084">
+  <testsuite name="UsuarioService" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:16" time="5.002" tests="10">
+    <testcase classname="UsuarioService should be defined" name="UsuarioService should be defined" time="0.017">
+    </testcase>
+    <testcase classname="UsuarioService should create Usuario" name="UsuarioService should create Usuario" time="0.005">
+    </testcase>
+    <testcase classname="UsuarioService should not create Usuario" name="UsuarioService should not create Usuario" time="0.011">
+    </testcase>
+    <testcase classname="UsuarioService should find Usuario" name="UsuarioService should find Usuario" time="0.004">
+    </testcase>
+    <testcase classname="UsuarioService should find Usuario with foto" name="UsuarioService should find Usuario with foto" time="0.004">
+    </testcase>
+    <testcase classname="UsuarioService should remove Usuario" name="UsuarioService should remove Usuario" time="0.004">
+    </testcase>
+    <testcase classname="UsuarioService should update Usuario" name="UsuarioService should update Usuario" time="0.005">
+    </testcase>
+    <testcase classname="UsuarioService should update Usuario with photo" name="UsuarioService should update Usuario with photo" time="0.003">
+    </testcase>
+    <testcase classname="UsuarioService findAll should findAll Usuario" name="UsuarioService findAll should findAll Usuario" time="0.005">
+    </testcase>
+    <testcase classname="UsuarioService findAllToPublicacao should findAllToPublicacao" name="UsuarioService findAllToPublicacao should findAllToPublicacao" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="UsuarioService" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:21" time="1.194" tests="10">
+    <testcase classname="UsuarioService should be defined" name="UsuarioService should be defined" time="0.011">
+    </testcase>
+    <testcase classname="UsuarioService should create Usuario" name="UsuarioService should create Usuario" time="0.004">
+    </testcase>
+    <testcase classname="UsuarioService should not create Usuario" name="UsuarioService should not create Usuario" time="0.01">
+    </testcase>
+    <testcase classname="UsuarioService should find Usuario" name="UsuarioService should find Usuario" time="0.003">
+    </testcase>
+    <testcase classname="UsuarioService should find Usuario with foto" name="UsuarioService should find Usuario with foto" time="0.004">
+    </testcase>
+    <testcase classname="UsuarioService should remove Usuario" name="UsuarioService should remove Usuario" time="0.003">
+    </testcase>
+    <testcase classname="UsuarioService should update Usuario" name="UsuarioService should update Usuario" time="0.003">
+    </testcase>
+    <testcase classname="UsuarioService should update Usuario with photo" name="UsuarioService should update Usuario with photo" time="0.007">
+    </testcase>
+    <testcase classname="UsuarioService findAll should findAll Usuario" name="UsuarioService findAll should findAll Usuario" time="0.005">
+    </testcase>
+    <testcase classname="UsuarioService findAllToPublicacao should findAllToPublicacao" name="UsuarioService findAllToPublicacao should findAllToPublicacao" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="UsuarioController" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:22" time="1.666" tests="8">
+    <testcase classname="UsuarioController should be defined" name="UsuarioController should be defined" time="0.012">
+    </testcase>
+    <testcase classname="UsuarioController should create Usuario" name="UsuarioController should create Usuario" time="0.007">
+    </testcase>
+    <testcase classname="UsuarioController should find Usuario" name="UsuarioController should find Usuario" time="0.005">
+    </testcase>
+    <testcase classname="UsuarioController should remove Usuario" name="UsuarioController should remove Usuario" time="0.004">
+    </testcase>
+    <testcase classname="UsuarioController should update Usuario" name="UsuarioController should update Usuario" time="0.004">
+    </testcase>
+    <testcase classname="UsuarioController findAll should findAll Usuario" name="UsuarioController findAll should findAll Usuario" time="0.003">
+    </testcase>
+    <testcase classname="UsuarioController should find Usuario TCP" name="UsuarioController should find Usuario TCP" time="0.003">
+    </testcase>
+    <testcase classname="UsuarioController should find all Usuario TCP" name="UsuarioController should find all Usuario TCP" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="UsuarioController" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:24" time="1.341" tests="8">
+    <testcase classname="UsuarioController should be defined" name="UsuarioController should be defined" time="0.013">
+    </testcase>
+    <testcase classname="UsuarioController should create Usuario" name="UsuarioController should create Usuario" time="0.004">
+    </testcase>
+    <testcase classname="UsuarioController should find Usuario" name="UsuarioController should find Usuario" time="0.004">
+    </testcase>
+    <testcase classname="UsuarioController should remove Usuario" name="UsuarioController should remove Usuario" time="0.003">
+    </testcase>
+    <testcase classname="UsuarioController should update Usuario" name="UsuarioController should update Usuario" time="0.008">
+    </testcase>
+    <testcase classname="UsuarioController findAll should findAll Usuario" name="UsuarioController findAll should findAll Usuario" time="0.003">
+    </testcase>
+    <testcase classname="UsuarioController should find Usuario TCP" name="UsuarioController should find Usuario TCP" time="0.003">
+    </testcase>
+    <testcase classname="UsuarioController should find all Usuario TCP" name="UsuarioController should find all Usuario TCP" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="AutenticacaoService" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:25" time="1.123" tests="5">
+    <testcase classname="AutenticacaoService should be defined" name="AutenticacaoService should be defined" time="0.011">
+    </testcase>
+    <testcase classname="AutenticacaoService should not login - no email found" name="AutenticacaoService should not login - no email found" time="0.007">
+    </testcase>
+    <testcase classname="AutenticacaoService should not login - wrong password" name="AutenticacaoService should not login - wrong password" time="0.003">
+    </testcase>
+    <testcase classname="AutenticacaoService should login" name="AutenticacaoService should login" time="0.003">
+    </testcase>
+    <testcase classname="AutenticacaoService should validate token" name="AutenticacaoService should validate token" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="Where Clause STRING" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:26" time="0.234" tests="14">
+    <testcase classname="Where Clause STRING should return empty string if value is undefined" name="Where Clause STRING should return empty string if value is undefined" time="0.002">
+    </testcase>
+    <testcase classname="Where Clause STRING should return empty string if value has no length" name="Where Clause STRING should return empty string if value has no length" time="0.001">
+    </testcase>
+    <testcase classname="Where Clause STRING should return where string based on given value and tableColumn" name="Where Clause STRING should return where string based on given value and tableColumn" time="0.001">
+    </testcase>
+    <testcase classname="Where Clause NUMBER should return empty string if value is undefined" name="Where Clause NUMBER should return empty string if value is undefined" time="0.001">
+    </testcase>
+    <testcase classname="Where Clause NUMBER should return where string based on given value and tableColumn" name="Where Clause NUMBER should return where string based on given value and tableColumn" time="0.001">
+    </testcase>
+    <testcase classname="Where Clause BOOLEAN should return empty string if value is undefined" name="Where Clause BOOLEAN should return empty string if value is undefined" time="0.002">
+    </testcase>
+    <testcase classname="Where Clause BOOLEAN should return empty string if value is higher than 1" name="Where Clause BOOLEAN should return empty string if value is higher than 1" time="0.001">
+    </testcase>
+    <testcase classname="Where Clause BOOLEAN should return where string based on given value and tableColumn" name="Where Clause BOOLEAN should return where string based on given value and tableColumn" time="0.001">
+    </testcase>
+    <testcase classname="Where Clause ARRAY NUMBER should return empty string if value is undefined" name="Where Clause ARRAY NUMBER should return empty string if value is undefined" time="0.001">
+    </testcase>
+    <testcase classname="Where Clause ARRAY NUMBER should return where string if value is number" name="Where Clause ARRAY NUMBER should return where string if value is number" time="0.001">
+    </testcase>
+    <testcase classname="Where Clause ARRAY NUMBER should return where string if value is number array" name="Where Clause ARRAY NUMBER should return where string if value is number array" time="0.001">
+    </testcase>
+    <testcase classname="Where Clause IN should return empty string if value is undefined" name="Where Clause IN should return empty string if value is undefined" time="0.001">
+    </testcase>
+    <testcase classname="Where Clause IN should return empty string if value is empty" name="Where Clause IN should return empty string if value is empty" time="0.001">
+    </testcase>
+    <testcase classname="Where Clause IN should return where string based on given value and tableColumn" name="Where Clause IN should return where string based on given value and tableColumn" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="DbService" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:27" time="0.556" tests="3">
+    <testcase classname="DbService should be defined" name="DbService should be defined" time="0.011">
+    </testcase>
+    <testcase classname="DbService should return db config development" name="DbService should return db config development" time="0.004">
+    </testcase>
+    <testcase classname="DbService should return db config production" name="DbService should return db config production" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="Buffer to image" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:27" time="0.229" tests="8">
+    <testcase classname="Buffer to image bufferToBase64 should be bufferToBase64 a image" name="Buffer to image bufferToBase64 should be bufferToBase64 a image" time="0.003">
+    </testcase>
+    <testcase classname="Buffer to image bufferToBase64 should getImageUri" name="Buffer to image bufferToBase64 should getImageUri" time="0.001">
+    </testcase>
+    <testcase classname="Buffer to image bufferToBase64 should be bufferToBase64 a empty if null" name="Buffer to image bufferToBase64 should be bufferToBase64 a empty if null" time="0.001">
+    </testcase>
+    <testcase classname="Buffer to image bufferToBase64 should be bufferToBase64 a empty if not image" name="Buffer to image bufferToBase64 should be bufferToBase64 a empty if not image" time="0.001">
+    </testcase>
+    <testcase classname="Buffer to image isBase64 should be false" name="Buffer to image isBase64 should be false" time="0.001">
+    </testcase>
+    <testcase classname="Buffer to image isBase64 should be true" name="Buffer to image isBase64 should be true" time="0.001">
+    </testcase>
+    <testcase classname="Buffer to image isBase64Image should be false" name="Buffer to image isBase64Image should be false" time="0">
+    </testcase>
+    <testcase classname="Buffer to image isBase64Image should be true" name="Buffer to image isBase64Image should be true" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="AutenticacaoController" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:28" time="1.175" tests="4">
+    <testcase classname="AutenticacaoController should be defined" name="AutenticacaoController should be defined" time="0.012">
+    </testcase>
+    <testcase classname="AutenticacaoController should login" name="AutenticacaoController should login" time="0.004">
+    </testcase>
+    <testcase classname="AutenticacaoController should validateToken" name="AutenticacaoController should validateToken" time="0.003">
+    </testcase>
+    <testcase classname="AutenticacaoController should not validateToken" name="AutenticacaoController should not validateToken" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="Pagination" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:29" time="0.388" tests="4">
+    <testcase classname="Pagination should be defined" name="Pagination should be defined" time="0.002">
+    </testcase>
+    <testcase classname="Pagination should be Paginate" name="Pagination should be Paginate" time="0.005">
+    </testcase>
+    <testcase classname="Pagination should be Paginate not limit" name="Pagination should be Paginate not limit" time="0">
+    </testcase>
+    <testcase classname="Pagination should be Paginate not offset" name="Pagination should be Paginate not offset" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="DataTransformInterceptor" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:29" time="0.418" tests="5">
+    <testcase classname="DataTransformInterceptor should be defined" name="DataTransformInterceptor should be defined" time="0.002">
+    </testcase>
+    <testcase classname="DataTransformInterceptor should be intercept t1" name="DataTransformInterceptor should be intercept t1" time="0.003">
+    </testcase>
+    <testcase classname="DataTransformInterceptor should be intercept should formatData with message" name="DataTransformInterceptor should be intercept should formatData with message" time="0.001">
+    </testcase>
+    <testcase classname="DataTransformInterceptor should be intercept should formatData with no message" name="DataTransformInterceptor should be intercept should formatData with no message" time="0.001">
+    </testcase>
+    <testcase classname="DataTransformInterceptor should be intercept should formatData with Paginate" name="DataTransformInterceptor should be intercept should formatData with Paginate" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="AllExceptionsFilter" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:30" time="0.399" tests="4">
+    <testcase classname="AllExceptionsFilter should be defined" name="AllExceptionsFilter should be defined" time="0.002">
+    </testcase>
+    <testcase classname="AllExceptionsFilter should be catch" name="AllExceptionsFilter should be catch" time="0.002">
+    </testcase>
+    <testcase classname="AllExceptionsFilter should be not exception to class-validator" name="AllExceptionsFilter should be not exception to class-validator" time="0.001">
+    </testcase>
+    <testcase classname="AllExceptionsFilter should be not exception only message" name="AllExceptionsFilter should be not exception only message" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="JwtStrategy" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:30" time="0.568" tests="2">
+    <testcase classname="JwtStrategy should be defined" name="JwtStrategy should be defined" time="0.012">
+    </testcase>
+    <testcase classname="JwtStrategy should validate" name="JwtStrategy should validate" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="HttpResponse" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:31" time="0.218" tests="6">
+    <testcase classname="HttpResponse should be defined" name="HttpResponse should be defined" time="0.002">
+    </testcase>
+    <testcase classname="HttpResponse should create message with payload text" name="HttpResponse should create message with payload text" time="0.001">
+    </testcase>
+    <testcase classname="HttpResponse should create message with success text" name="HttpResponse should create message with success text" time="0.001">
+    </testcase>
+    <testcase classname="HttpResponse should create message with updated text" name="HttpResponse should create message with updated text" time="0.001">
+    </testcase>
+    <testcase classname="HttpResponse should create message with deleted text" name="HttpResponse should create message with deleted text" time="0.001">
+    </testcase>
+    <testcase classname="HttpResponse should create message with login text" name="HttpResponse should create message with login text" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="JwtAuthGuard" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:31" time="0.51" tests="3">
+    <testcase classname="JwtAuthGuard should be defined" name="JwtAuthGuard should be defined" time="0.011">
+    </testcase>
+    <testcase classname="JwtAuthGuard should activate public routes" name="JwtAuthGuard should activate public routes" time="0.003">
+    </testcase>
+    <testcase classname="JwtAuthGuard should handle request for no user" name="JwtAuthGuard should handle request for no user" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="Pagination" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:31" time="0.366" tests="8">
+    <testcase classname="Pagination should be defined" name="Pagination should be defined" time="0.002">
+    </testcase>
+    <testcase classname="Pagination should be Paginate" name="Pagination should be Paginate" time="0.001">
+    </testcase>
+    <testcase classname="Pagination should be Paginate not limit" name="Pagination should be Paginate not limit" time="0.001">
+    </testcase>
+    <testcase classname="Pagination should be Paginate not offset" name="Pagination should be Paginate not offset" time="0.001">
+    </testcase>
+    <testcase classname="Ordenate should return default object if there is no JSON" name="Ordenate should return default object if there is no JSON" time="0.001">
+    </testcase>
+    <testcase classname="Ordenate should return OrderParams object with values for order" name="Ordenate should return OrderParams object with values for order" time="0.001">
+    </testcase>
+    <testcase classname="Ordenate should return default values when obj has empty props" name="Ordenate should return default values when obj has empty props" time="0.001">
+    </testcase>
+    <testcase classname="Ordenate should be Ordenate using factory" name="Ordenate should be Ordenate using factory" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Pagination" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:32" time="0.457" tests="7">
+    <testcase classname="Pagination should be defined" name="Pagination should be defined" time="0.003">
+    </testcase>
+    <testcase classname="Pagination should be Paginate" name="Pagination should be Paginate" time="0.002">
+    </testcase>
+    <testcase classname="Pagination should be Paginate not limit" name="Pagination should be Paginate not limit" time="0.001">
+    </testcase>
+    <testcase classname="Pagination should be Paginate not offset" name="Pagination should be Paginate not offset" time="0.001">
+    </testcase>
+    <testcase classname="Filtrate should return empty object for filter" name="Filtrate should return empty object for filter" time="0.001">
+    </testcase>
+    <testcase classname="Filtrate should return TestFilterProps object with values for filter" name="Filtrate should return TestFilterProps object with values for filter" time="0.001">
+    </testcase>
+    <testcase classname="Filtrate should be Filtrate using factory" name="Filtrate should be Filtrate using factory" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Helper" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:32" time="0.223" tests="6">
+    <testcase classname="Helper deve criar um hash com tamanho default" name="Helper deve criar um hash com tamanho default" time="0.005">
+    </testcase>
+    <testcase classname="Helper should be return if its nill for undefined" name="Helper should be return if its nill for undefined" time="0.001">
+    </testcase>
+    <testcase classname="Helper should be return if its nill for null" name="Helper should be return if its nill for null" time="0.001">
+    </testcase>
+    <testcase classname="Helper should be isJsonObject to be true" name="Helper should be isJsonObject to be true" time="0.001">
+    </testcase>
+    <testcase classname="Helper should be isJsonObject to be false" name="Helper should be isJsonObject to be false" time="0.001">
+    </testcase>
+    <testcase classname="Helper should be isJsonObject to be false in not parse" name="Helper should be isJsonObject to be false in not parse" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="Pagination" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:32" time="0.394" tests="7">
+    <testcase classname="Pagination should be defined" name="Pagination should be defined" time="0.002">
+    </testcase>
+    <testcase classname="Pagination should be Paginate" name="Pagination should be Paginate" time="0.001">
+    </testcase>
+    <testcase classname="Pagination should be Paginate not limit" name="Pagination should be Paginate not limit" time="0">
+    </testcase>
+    <testcase classname="Pagination should be Paginate not offset" name="Pagination should be Paginate not offset" time="0.001">
+    </testcase>
+    <testcase classname="FiltrateString should return empty object for filter" name="FiltrateString should return empty object for filter" time="0">
+    </testcase>
+    <testcase classname="FiltrateString should return TestFilterProps object with values for filter" name="FiltrateString should return TestFilterProps object with values for filter" time="0">
+    </testcase>
+    <testcase classname="FiltrateString should be FiltrateString using factory" name="FiltrateString should be FiltrateString using factory" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="ModelNotFoundExceptionFilter" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:33" time="0.388" tests="2">
+    <testcase classname="ModelNotFoundExceptionFilter should be defined" name="ModelNotFoundExceptionFilter should be defined" time="0.002">
+    </testcase>
+    <testcase classname="ModelNotFoundExceptionFilter should be catch" name="ModelNotFoundExceptionFilter should be catch" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="AppController" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:33" time="0.522" tests="2">
+    <testcase classname="AppController should be defined" name="AppController should be defined" time="0.014">
+    </testcase>
+    <testcase classname="AppController should make health check" name="AppController should make health check" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="AppController" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:34" time="0.463" tests="2">
+    <testcase classname="AppController should be defined" name="AppController should be defined" time="0.014">
+    </testcase>
+    <testcase classname="AppController should make health check" name="AppController should make health check" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="AppService" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:34" time="0.485" tests="2">
+    <testcase classname="AppService should be defined" name="AppService should be defined" time="0.011">
+    </testcase>
+    <testcase classname="AppService should make health check" name="AppService should make health check" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="AppService" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:35" time="0.465" tests="2">
+    <testcase classname="AppService should be defined" name="AppService should be defined" time="0.011">
+    </testcase>
+    <testcase classname="AppService should make health check" name="AppService should make health check" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="String Helpers" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:35" time="0.237" tests="1">
+    <testcase classname="String Helpers should be regex" name="String Helpers should be regex" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="HttpResponse" errors="0" failures="0" skipped="0" timestamp="2023-11-30T22:54:36" time="0.329" tests="1">
+    <testcase classname="HttpResponse should be defined" name="HttpResponse should be defined" time="0.002">
+    </testcase>
+  </testsuite>
+</testsuites>

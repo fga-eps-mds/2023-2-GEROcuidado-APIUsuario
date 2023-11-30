@@ -1,0 +1,188 @@
+<testExecutions version="1">
+<file path="tests\usuario.service.spec.ts">
+<testCase name="UsuarioService should be defined" duration="17" />
+<testCase name="UsuarioService should create Usuario" duration="5" />
+<testCase name="UsuarioService should not create Usuario" duration="11" />
+<testCase name="UsuarioService should find Usuario" duration="4" />
+<testCase name="UsuarioService should find Usuario with foto" duration="4" />
+<testCase name="UsuarioService should remove Usuario" duration="4" />
+<testCase name="UsuarioService should update Usuario" duration="5" />
+<testCase name="UsuarioService should update Usuario with photo" duration="3" />
+<testCase name="UsuarioService findAll should findAll Usuario" duration="5" />
+<testCase name="UsuarioService findAllToPublicacao should findAllToPublicacao" duration="7" />
+</file>
+<file path="usuario\usuario.service.spec.ts">
+<testCase name="UsuarioService should be defined" duration="11" />
+<testCase name="UsuarioService should create Usuario" duration="4" />
+<testCase name="UsuarioService should not create Usuario" duration="10" />
+<testCase name="UsuarioService should find Usuario" duration="3" />
+<testCase name="UsuarioService should find Usuario with foto" duration="4" />
+<testCase name="UsuarioService should remove Usuario" duration="3" />
+<testCase name="UsuarioService should update Usuario" duration="3" />
+<testCase name="UsuarioService should update Usuario with photo" duration="7" />
+<testCase name="UsuarioService findAll should findAll Usuario" duration="5" />
+<testCase name="UsuarioService findAllToPublicacao should findAllToPublicacao" duration="4" />
+</file>
+<file path="tests\usuario.controller.spec.ts">
+<testCase name="UsuarioController should be defined" duration="12" />
+<testCase name="UsuarioController should create Usuario" duration="7" />
+<testCase name="UsuarioController should find Usuario" duration="5" />
+<testCase name="UsuarioController should remove Usuario" duration="4" />
+<testCase name="UsuarioController should update Usuario" duration="4" />
+<testCase name="UsuarioController findAll should findAll Usuario" duration="3" />
+<testCase name="UsuarioController should find Usuario TCP" duration="3" />
+<testCase name="UsuarioController should find all Usuario TCP" duration="3" />
+</file>
+<file path="usuario\usuario.controller.spec.ts">
+<testCase name="UsuarioController should be defined" duration="13" />
+<testCase name="UsuarioController should create Usuario" duration="4" />
+<testCase name="UsuarioController should find Usuario" duration="4" />
+<testCase name="UsuarioController should remove Usuario" duration="3" />
+<testCase name="UsuarioController should update Usuario" duration="8" />
+<testCase name="UsuarioController findAll should findAll Usuario" duration="3" />
+<testCase name="UsuarioController should find Usuario TCP" duration="3" />
+<testCase name="UsuarioController should find all Usuario TCP" duration="3" />
+</file>
+<file path="autenticacao\autenticacao.service.spec.ts">
+<testCase name="AutenticacaoService should be defined" duration="11" />
+<testCase name="AutenticacaoService should not login - no email found" duration="7" />
+<testCase name="AutenticacaoService should not login - wrong password" duration="3" />
+<testCase name="AutenticacaoService should login" duration="3" />
+<testCase name="AutenticacaoService should validate token" duration="3" />
+</file>
+<file path="shared\helpers\sql-query-helper.spec.ts">
+<testCase name="Where Clause STRING should return empty string if value is undefined" duration="2" />
+<testCase name="Where Clause STRING should return empty string if value has no length" duration="1" />
+<testCase name="Where Clause STRING should return where string based on given value and tableColumn" duration="1" />
+<testCase name="Where Clause NUMBER should return empty string if value is undefined" duration="1" />
+<testCase name="Where Clause NUMBER should return where string based on given value and tableColumn" duration="1" />
+<testCase name="Where Clause BOOLEAN should return empty string if value is undefined" duration="2" />
+<testCase name="Where Clause BOOLEAN should return empty string if value is higher than 1" duration="1" />
+<testCase name="Where Clause BOOLEAN should return where string based on given value and tableColumn" duration="1" />
+<testCase name="Where Clause ARRAY NUMBER should return empty string if value is undefined" duration="1" />
+<testCase name="Where Clause ARRAY NUMBER should return where string if value is number" duration="1" />
+<testCase name="Where Clause ARRAY NUMBER should return where string if value is number array" duration="1" />
+<testCase name="Where Clause IN should return empty string if value is undefined" duration="1" />
+<testCase name="Where Clause IN should return empty string if value is empty" duration="1" />
+<testCase name="Where Clause IN should return where string based on given value and tableColumn" duration="1" />
+</file>
+<file path="config\db\db.service.spec.ts">
+<testCase name="DbService should be defined" duration="11" />
+<testCase name="DbService should return db config development" duration="4" />
+<testCase name="DbService should return db config production" duration="3" />
+</file>
+<file path="shared\helpers\buffer-to-image.spec.ts">
+<testCase name="Buffer to image bufferToBase64 should be bufferToBase64 a image" duration="3" />
+<testCase name="Buffer to image bufferToBase64 should getImageUri" duration="1" />
+<testCase name="Buffer to image bufferToBase64 should be bufferToBase64 a empty if null" duration="1" />
+<testCase name="Buffer to image bufferToBase64 should be bufferToBase64 a empty if not image" duration="1" />
+<testCase name="Buffer to image isBase64 should be false" duration="1" />
+<testCase name="Buffer to image isBase64 should be true" duration="1" />
+<testCase name="Buffer to image isBase64Image should be false" duration="0" />
+<testCase name="Buffer to image isBase64Image should be true" duration="0" />
+</file>
+<file path="autenticacao\autenticacao.controller.spec.ts">
+<testCase name="AutenticacaoController should be defined" duration="12" />
+<testCase name="AutenticacaoController should login" duration="4" />
+<testCase name="AutenticacaoController should validateToken" duration="3" />
+<testCase name="AutenticacaoController should not validateToken" duration="4" />
+</file>
+<file path="shared\decorators\paginate.decorator.spec.ts">
+<testCase name="Pagination should be defined" duration="2" />
+<testCase name="Pagination should be Paginate" duration="5" />
+<testCase name="Pagination should be Paginate not limit" duration="0" />
+<testCase name="Pagination should be Paginate not offset" duration="0" />
+</file>
+<file path="shared\interceptors\data-transform.interceptor.spec.ts">
+<testCase name="DataTransformInterceptor should be defined" duration="2" />
+<testCase name="DataTransformInterceptor should be intercept t1" duration="3" />
+<testCase name="DataTransformInterceptor should be intercept should formatData with message" duration="1" />
+<testCase name="DataTransformInterceptor should be intercept should formatData with no message" duration="1" />
+<testCase name="DataTransformInterceptor should be intercept should formatData with Paginate" duration="1" />
+</file>
+<file path="shared\filters\all-exceptions.filter.spec.ts">
+<testCase name="AllExceptionsFilter should be defined" duration="2" />
+<testCase name="AllExceptionsFilter should be catch" duration="2" />
+<testCase name="AllExceptionsFilter should be not exception to class-validator" duration="1" />
+<testCase name="AllExceptionsFilter should be not exception only message" duration="1" />
+</file>
+<file path="autenticacao\jwt.strategy.spec.ts">
+<testCase name="JwtStrategy should be defined" duration="12" />
+<testCase name="JwtStrategy should validate" duration="4" />
+</file>
+<file path="shared\classes\http-response.spec.ts">
+<testCase name="HttpResponse should be defined" duration="2" />
+<testCase name="HttpResponse should create message with payload text" duration="1" />
+<testCase name="HttpResponse should create message with success text" duration="1" />
+<testCase name="HttpResponse should create message with updated text" duration="1" />
+<testCase name="HttpResponse should create message with deleted text" duration="1" />
+<testCase name="HttpResponse should create message with login text" duration="0" />
+</file>
+<file path="autenticacao\jwt-auth.guard.spec.ts">
+<testCase name="JwtAuthGuard should be defined" duration="11" />
+<testCase name="JwtAuthGuard should activate public routes" duration="3" />
+<testCase name="JwtAuthGuard should handle request for no user" duration="9" />
+</file>
+<file path="shared\decorators\ordenate.decorator.spec.ts">
+<testCase name="Pagination should be defined" duration="2" />
+<testCase name="Pagination should be Paginate" duration="1" />
+<testCase name="Pagination should be Paginate not limit" duration="1" />
+<testCase name="Pagination should be Paginate not offset" duration="1" />
+<testCase name="Ordenate should return default object if there is no JSON" duration="1" />
+<testCase name="Ordenate should return OrderParams object with values for order" duration="1" />
+<testCase name="Ordenate should return default values when obj has empty props" duration="1" />
+<testCase name="Ordenate should be Ordenate using factory" duration="1" />
+</file>
+<file path="shared\decorators\filtrate.decorator.spec.ts">
+<testCase name="Pagination should be defined" duration="3" />
+<testCase name="Pagination should be Paginate" duration="2" />
+<testCase name="Pagination should be Paginate not limit" duration="1" />
+<testCase name="Pagination should be Paginate not offset" duration="1" />
+<testCase name="Filtrate should return empty object for filter" duration="1" />
+<testCase name="Filtrate should return TestFilterProps object with values for filter" duration="1" />
+<testCase name="Filtrate should be Filtrate using factory" duration="1" />
+</file>
+<file path="shared\helpers\commons.spec.ts">
+<testCase name="Helper deve criar um hash com tamanho default" duration="5" />
+<testCase name="Helper should be return if its nill for undefined" duration="1" />
+<testCase name="Helper should be return if its nill for null" duration="1" />
+<testCase name="Helper should be isJsonObject to be true" duration="1" />
+<testCase name="Helper should be isJsonObject to be false" duration="1" />
+<testCase name="Helper should be isJsonObject to be false in not parse" duration="0" />
+</file>
+<file path="shared\decorators\filtrate-string.spec.ts">
+<testCase name="Pagination should be defined" duration="2" />
+<testCase name="Pagination should be Paginate" duration="1" />
+<testCase name="Pagination should be Paginate not limit" duration="0" />
+<testCase name="Pagination should be Paginate not offset" duration="1" />
+<testCase name="FiltrateString should return empty object for filter" duration="0" />
+<testCase name="FiltrateString should return TestFilterProps object with values for filter" duration="0" />
+<testCase name="FiltrateString should be FiltrateString using factory" duration="1" />
+</file>
+<file path="shared\filters\model-not-found.exception-filter.spec.ts">
+<testCase name="ModelNotFoundExceptionFilter should be defined" duration="2" />
+<testCase name="ModelNotFoundExceptionFilter should be catch" duration="2" />
+</file>
+<file path="tests\app.controller.spec.ts">
+<testCase name="AppController should be defined" duration="14" />
+<testCase name="AppController should make health check" duration="3" />
+</file>
+<file path="app.controller.spec.ts">
+<testCase name="AppController should be defined" duration="14" />
+<testCase name="AppController should make health check" duration="4" />
+</file>
+<file path="tests\app.service.spec.ts">
+<testCase name="AppService should be defined" duration="11" />
+<testCase name="AppService should make health check" duration="4" />
+</file>
+<file path="app.service.spec.ts">
+<testCase name="AppService should be defined" duration="11" />
+<testCase name="AppService should make health check" duration="4" />
+</file>
+<file path="shared\helpers\string-helpers.spec.ts">
+<testCase name="String Helpers should be regex" duration="2" />
+</file>
+<file path="shared\validators\id.validator.spec.ts">
+<testCase name="HttpResponse should be defined" duration="2" />
+</file>
+</testExecutions>
