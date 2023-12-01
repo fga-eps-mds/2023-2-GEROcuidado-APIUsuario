@@ -117,6 +117,7 @@
       "json",
       "ts"
     ],
+    "testResultsProcessor": "jest-sonar-reporter",
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
@@ -126,23 +127,8 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
-    "coverageReporters": [
-      "json",
-      "lcov",
-      "text",
-      "clover",
-      "cobertura"
-    ],
     "reporters": [
       "default",
-      [
-        "jest-sonar",
-        {
-          "outputDirectory": "reports",
-          "sonarQubeVersion": "LATEST",
-          "usePathForSuiteName": "true"
-        }
-      ],
       [
         "jest-junit",
         {
@@ -166,5 +152,10 @@
       "src/migration"
     ],
     "testEnvironment": "node"
+  },
+  "jestSonar": {
+    "reportPath": "reports",
+    "reportFile": "sonar-report.xml",
+    "indent": 4
   }
 }
