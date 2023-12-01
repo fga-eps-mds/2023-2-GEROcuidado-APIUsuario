@@ -17,7 +17,7 @@ Arquivo .env.development e .env.test:
     JWT_TOKEN_EXPIRES_IN=
     HASH_SALT=
 
-Arquivo .docker-compose, na seção **_environment_**:
+Arquivo .do22cker-compose, na seção **_environment_**:
 
     ...
     environment:
@@ -30,41 +30,42 @@ Da mesma forma, alterar os valores das portas terminadas em **_x_** (i.e 300x pa
 
 ## Execução
 
-  Para subir a aplicação, basta rodar o comando:
+Para subir a aplicação, basta rodar o comando:
 
-  ```bash
-  docker compose up
-  ```
+```bash
+docker compose up
+```
 
 ## Testes
 
-  Para testar a aplicação, suba o container de testes:
+Para testar a aplicação, suba o container de testes:
 
-  ```bash
-    TEST=dev docker compose -f docker-compose.test.yml up
-  ```
+```bash
+  TEST=dev docker compose -f docker-compose.test.yml up
+```
 
- E rode os comandos para os testes unitários e E2E respectivamente (:cov gera o arquivo de coverage na raiz do projeto):
-  ```bash
-    npm run test:cov
-    npm run test:e2e:cov
-  ```
+E rode os comandos para os testes unitários e E2E respectivamente (:cov gera o arquivo de coverage na raiz do projeto):
 
- ## Migrations
+```bash
+  npm run test:cov
+  npm run test:e2e:cov
+```
 
-  Sempre que houver qualquer alteração em alguma entidade na aplicação (adicionar uma entidade, remover ou edita-la), deve ser gerada uma migration para sincronizar o banco de dados.
+## Migrations
 
-  1. Entrar no container da api:
+Sempre que houver qualquer alteração em alguma entidade na aplicação (adicionar uma entidade, remover ou edita-la), deve ser gerada uma migration para sincronizar o banco de dados.
 
-  ```bash
-    docker exec -it gerocuidado-usuario-api bash
-  ```
+1. Entrar no container da api:
 
-  2. Rodar o comando de criar uma migration (tente dar um nome descritivo, ex.: CreateTableUsuario)
+```bash
+  docker exec -it gerocuidado-usuario-api bash
+```
 
-  ```bash
-    npm run typeorm:migrate src/migration/NOME_DA_MIGRATION
-  ```
+2. Rodar o comando de criar uma migration (tente dar um nome descritivo, ex.: CreateTableUsuario)
+
+```bash
+  npm run typeorm:migrate src/migration/NOME_DA_MIGRATION
+```
 
 # Dicionário variáveis de ambiente
 
