@@ -128,11 +128,20 @@
     ],
     "reporters": [
       "default",
+      "lcov",
+      [
+        "jest-sonar",
+        {
+          "outputDirectory": "reports",
+          "sonarQubeVersion": "LATEST",
+          "usePathForSuiteName": "true"
+        }
+      ],
       [
         "jest-junit",
         {
           "outputDirectory": "reports",
-          "outputName": "sonar-report.xml",
+          "outputName": "junit.xml",
           "usePathForSuiteName": "true"
         }
       ]
