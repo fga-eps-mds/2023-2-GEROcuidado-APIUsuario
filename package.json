@@ -117,7 +117,6 @@
       "json",
       "ts"
     ],
-    "testResultsProcessor": "jest-sonar-reporter",
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
@@ -129,6 +128,14 @@
     ],
     "reporters": [
       "default",
+      [
+        "jest-sonar",
+        {
+          "outputDirectory": "reports",
+          "outputName": "sonar-report.xml",
+          "relativeRootDir": "."
+        }
+      ],
       [
         "jest-junit",
         {
@@ -152,10 +159,5 @@
       "src/migration"
     ],
     "testEnvironment": "node"
-  },
-  "jestSonar": {
-    "reportPath": "reports",
-    "reportFile": "sonar-report.xml",
-    "indent": 4
   }
 }
