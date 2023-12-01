@@ -128,7 +128,6 @@
     ],
     "reporters": [
       "default",
-      "lcov",
       [
         "jest-sonar",
         {
