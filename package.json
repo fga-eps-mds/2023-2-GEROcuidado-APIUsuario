@@ -126,8 +126,15 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "clover"
+    ],
     "reporters": [
       "default",
+      
       [
         "jest-sonar",
         {
