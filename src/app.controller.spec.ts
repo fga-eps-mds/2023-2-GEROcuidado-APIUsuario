@@ -21,7 +21,7 @@ describe('AppController', () => {
 
   it('should make health check', () => {
     expect(controller.healthCheck()).toEqual({
-      message: 'GEROcuidadoApiUsuario health check',
+      message: 'GEROcuidadoApiUsuario health check Ok!',
       data: {},
     });
   });
