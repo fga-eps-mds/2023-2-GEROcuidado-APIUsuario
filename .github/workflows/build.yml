@@ -4,6 +4,7 @@ on:
     branches:
       - develop
       - release-sonar
+      - release-retroativo1
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
